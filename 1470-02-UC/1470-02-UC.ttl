@@ -4,12 +4,11 @@
 @prefix ns1: <http://example.com/ktc-semantic-model#> .
 @prefix ns2: <http://qudt.org/schema/qudt/> .
 @prefix ns3: <https://brickschema.org/schema/1.1/Brick#> .
-@prefix ns4: <http://example.com/ktc-objects#> .
 
 <urn:ex/VS01>
   a <http://data.ashrae.org/standard223#System> ;
   ns0:hasMember <urn:ex/VS01-HeatExchanger>, <urn:ex/VS01-InletValve>, <urn:ex/VS01-InletValveActuator>, <urn:ex/VS01-Pump>, <urn:ex/VS01-PumpActuator>, <urn:ex/VS01-ExpansionTank>, <urn:ex/VS01-HeatingWaterSupplyTemperatureSensor>, <urn:ex/VS01-HeatingWaterReturnTemperatureSensor>, <urn:ex/VS01-HeatingWaterPressureSensor>, <urn:ex/VS01-OutsideAirTemperatureSensor> ;
-  dc11:description "DH Source Heating System"^^xsd:string .
+  dc11:description "Heating Water System"^^xsd:string .
 
 <urn:ex/VS01-HeatExchanger>
   a ns0:Equipment, ns0:HeatExchanger ;
@@ -65,7 +64,7 @@
 <urn:ex/VV01>
   a ns0:System ;
   ns0:hasMember <urn:ex/VV01-HeatExchanger>, <urn:ex/VV01-InletValve>, <urn:ex/VV01-InletValveActuator>, <urn:ex/VV01-Pump>, <urn:ex/VV01-PumpActuator>, <urn:ex/VS01-ExpansionTank>, <urn:ex/VV01-DomesticHotWaterSupplyTemperatureSensor>, <urn:ex/VV01-DomesticHotWaterReturnTemperatureSensor>, <urn:ex/VV01-DomesticHotWaterReturnColdWaterMeter> ;
-  dc11:description "DH Source Domestic Hot Water System"^^xsd:string .
+  dc11:description "Domestic Hot Water System"^^xsd:string .
 
 <urn:ex/VV01-HeatExchanger>
   a ns0:Equipment, ns0:HeatExchanger ;
@@ -105,7 +104,7 @@
 <urn:ex/VP01>
   a ns0:System ;
   ns0:hasMember <urn:ex/VP01-DHSupplyTemperatureSensor>, <urn:ex/VP01-DHReturnTemperatureSensor>, <urn:ex/VP01-DHDifferentialTemperatureSensor>, <urn:ex/VP01-DHSupplyFlowMeter> ;
-  dc11:description "DH Source DH Side"^^xsd:string .
+  dc11:description "District Heat Source System"^^xsd:string .
 
 <urn:ex/VP01-DHSupplyTemperatureSensor>
   a ns0:TemperatureSensor ;
@@ -238,7 +237,7 @@
 
 <urn:ex/VV01-HeatExchangerSecondaryOutlet>
   a ns0:OutletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/VV01-BuildingDomesticHotWaterSupplyConnection> .
+  ns0:connectsThrough <urn:ex/VV01-HeatExchangerSecondaryOutletConnection> .
 
 <urn:ex/VV01-InletValveInlet>
   a ns0:InletConnectionPoint ;
@@ -360,65 +359,21 @@
   a ns0:OutletConnectionPoint ;
   ns0:connectsThrough <urn:ex/KV01-DomesticColdWaterSupplyConnection> .
 
-<urn:ex/VP01-DistrictHeatSupplyJunction>
-  a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/VP01-DistrictHeatSupply> .
-
-<urn:ex/VP01-DistrictHeatSupply>
-  a ns0:OutletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/VP01-DistrictHeatSupplyConnection> .
-
-<urn:ex/VP01-DistrictHeatReturnJunction>
-  a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/VP01-DistrictHeatReturn> .
-
-<urn:ex/VP01-DistrictHeatReturn>
-  a ns0:InletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/VP01-DistrictHeatReturnConnection> .
-
-<urn:ex/KV01-DistrictColdWaterSupplyJunction>
-  a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/KV01-DistrictColdWaterSupply> .
-
-<urn:ex/KV01-DistrictColdWaterSupply>
-  a ns0:OutletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/KV01-DistrictColdWaterSupplyConnection> .
-
-<urn:ex/VS01-BuildingHeatingWaterSupplyJunction>
-  a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/VS01-BuildingHeatingWaterSupply> .
-
-<urn:ex/VS01-BuildingHeatingWaterSupply>
-  a ns0:InletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/BuildingHeatingWaterSupplyConnection> .
-
-<urn:ex/VS01-BuildingHeatingWaterReturnJunction>
-  a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/VS01-BuildingHeatingWaterReturn> .
-
-<urn:ex/VS01-BuildingHeatingWaterReturn>
-  a ns0:OutletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/VS01-BuildingHeatingWaterReturnConnection> .
-
 <urn:ex/VV01-BuildingDomesticHotWaterSupplyJunction>
   a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/VV01-BuildingDomesticHotWaterSupply>, <urn:ex/VV01-BuildingDomesticHotWaterRecirculation> .
+  ns0:hasConnectionPoint <urn:ex/VV01-BuildingDomesticHotWaterSupplyInlet>, <urn:ex/VV01-BuildingDomesticHotWaterSupplyOutlet>, <urn:ex/VV01-BuildingDomesticHotWaterRecirculation> .
 
-<urn:ex/VV01-BuildingDomesticHotWaterSupply>
+<urn:ex/VV01-BuildingDomesticHotWaterSupplyInlet>
   a ns0:InletConnectionPoint ;
+  ns0:connectsThrough <urn:ex/VV01-HeatExchangerSecondaryOutletConnection> .
+
+<urn:ex/VV01-BuildingDomesticHotWaterSupplyOutlet>
+  a ns0:OutletConnectionPoint ;
   ns0:connectsThrough <urn:ex/VV01-BuildingDomesticHotWaterSupplyConnection> .
 
 <urn:ex/VV01-BuildingDomesticHotWaterRecirculation>
   a ns0:OutletConnectionPoint ;
   ns0:connectsThrough <urn:ex/VV01-BuildingDomesticHotWaterRecirculationConnection> .
-
-<urn:ex/KV01-BuildingDomesticColdWaterSupplyJunction>
-  a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/KV01-BuildingDomesticColdWaterSupply> .
-
-<urn:ex/KV01-BuildingDomesticColdWaterSupply>
-  a ns0:InletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/KV01-DomesticColdWaterSupplyConnection> .
 
 <urn:ex/VS01-HeatExchangerPrimaryInletConnection>
   a ns0:Connection ;
@@ -448,6 +403,10 @@
   a ns0:Connection ;
   ns0:hasMedium ns0:Water .
 
+<urn:ex/VV01-HeatExchangerSecondaryOutletConnection>
+  a ns0:Connection ;
+  ns0:hasMedium ns0:Water .
+
 <urn:ex/VV01-BuildingDomesticHotWaterRecirculationConnection>
   a ns0:Connection ;
   ns0:hasMedium ns0:Water .
@@ -456,15 +415,15 @@
   a ns0:Connection ;
   ns0:hasMedium ns0:Water .
 
-<urn:ex/VP01-DistrictHeatReturnConnection>
-  a ns0:Connection ;
-  ns0:hasMedium ns0:Water-GlycolSolution .
-
 <urn:ex/KV01-DistrictColdWaterSupplyConnection>
   a ns0:Connection ;
   ns0:hasMedium ns0:Water .
 
-<urn:ex/KV01-DistrictColdWaterSupplyFLow>
+<urn:ex/VP01-DistrictHeatReturnConnection>
+  a ns0:Connection ;
+  ns0:hasMedium ns0:Water-GlycolSolution .
+
+<urn:ex/KV01-DistrictColdWaterSupplyFlow>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
   ns0:hasAspect ns0:Role-Supply ;
   ns1:referenceDesignator "VV01-VM1"^^xsd:string ;
@@ -473,27 +432,3 @@
   ns3:isPointOf <urn:ex/VV01-DistrictColdWaterSupplyonnection> .
 
 <urn:ex/OutsideAirSpace> a ns0:DomainSpace .
-<urn:ex/VS01-HeatingWaterSupplyTemperatureMeasuredValue> a ns0:QuantifiableObservableProperty .
-<urn:ex/VS01-HeatingWaterSupplyTemperatureSetpoint>
-  a ns0:QuantifiableObservableProperty ;
-  ns0:hasAspect ns0:Aspect-Setpoint .
-
-<urn:ex/VS01-HeatingWaterSupplyTemperatureControlOutput> a ns0:ActuatableProperty .
-<urn:ex/HeatingWaterSupplyTemperatureControlInput>
-  a ns0:Function ;
-  ns0:hasInput <urn:ex/VS01-HeatingWaterSupplyTemperature> ;
-  ns0:hasOutput <urn:ex/VS01-HeatingWaterSupplyTemperatureMeasuredValue> ;
-  ns4:objectType ns4:AnalogInput .
-
-<urn:ex/HeatingWaterSupplyTemperatureControl>
-  a ns0:Function ;
-  ns0:hasAspect ns0:Role-Controller ;
-  ns0:hasInput <urn:ex/VS01-HeatingWaterSupplyTemperatureMeasuredValue>, <urn:ex/VS01-HeatingWaterSupplyTemperatureSetpoint> ;
-  ns0:hasOutput <urn:ex/VS01-HeatingWaterSupplyTemperatureControlOutput> ;
-  ns4:objectType ns4:LoopRegulator .
-
-<urn:ex/HeatingWaterSupplyTemperatureControlOutput>
-  a ns0:Function ;
-  ns0:hasInput <urn:ex/VS01-HeatingWaterSupplyTemperatureControlOutput> ;
-  ns0:hasOutput <urn:ex/VS01-InletValvePosition> ;
-  ns4:objectType ns4:AnalogOutput .

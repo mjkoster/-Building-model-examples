@@ -73,9 +73,9 @@
 
 # Start definitions
 "@graph":
-  # System
+  # Heating Water System
   - "@id": this:VS01
-    description: DH Source Heating System 
+    description: Heating Water System 
     "@type": 
       - s223:System
     hasMember:
@@ -91,7 +91,7 @@
       - this:VS01-OutsideAirTemperatureSensor
 
   - "@id": this:VV01
-    description: DH Source Domestic Hot Water System 
+    description: Domestic Hot Water System 
     "@type": 
       - s223:System
     hasMember:
@@ -106,7 +106,7 @@
       - this:VV01-DomesticHotWaterReturnColdWaterMeter
 
   - "@id": this:VP01
-    description: DH Source DH Side 
+    description: District Heat Source System
     "@type": 
       - s223:System
     hasMember:
@@ -299,48 +299,13 @@
     hasObservationLocation: 
 
   # Junctions
-  - "@id": this:VP01-DistrictHeatSupplyJunction
-    "@type": 
-      - s223:Junction
-    hasConnectionPoint:
-      - this:VP01-DistrictHeatSupply
-
-  - "@id": this:VP01-DistrictHeatReturnJunction
-    "@type": 
-      - s223:Junction
-    hasConnectionPoint:
-      - this:VP01-DistrictHeatReturn
-
-  - "@id": this:KV01-DistrictColdWaterSupplyJunction
-    "@type": 
-      - s223:Junction
-    hasConnectionPoint:
-      - this:KV01-DistrictColdWaterSupply
-
-  - "@id": this:VS01-BuildingHeatingWaterSupplyJunction
-    "@type": 
-      - s223:Junction
-    hasConnectionPoint:
-      - this:VS01-BuildingHeatingWaterSupply
-
-  - "@id": this:VS01-BuildingHeatingWaterReturnJunction
-    "@type": 
-      - s223:Junction
-    hasConnectionPoint:
-      - this:VS01-BuildingHeatingWaterReturn
-
   - "@id": this:VV01-BuildingDomesticHotWaterSupplyJunction
     "@type": 
       - s223:Junction
     hasConnectionPoint:
-      - this:VV01-BuildingDomesticHotWaterSupply
+      - this:VV01-BuildingDomesticHotWaterSupplyInlet
+      - this:VV01-BuildingDomesticHotWaterSupplyOutlet
       - this:VV01-BuildingDomesticHotWaterRecirculation
-
-  - "@id": this:KV01-BuildingDomesticColdWaterSupplyJunction
-    "@type": 
-      - s223:Junction
-    hasConnectionPoint:
-      - this:KV01-BuildingDomesticColdWaterSupply
 
   # VS01 ConnectionPoints
   - "@id": this:VS01-HeatExchangerPrimaryInlet
@@ -388,18 +353,6 @@
       - s223:BidirectionalConnectionPoint
     connectsThrough: this:VS01-BuildingHeatingWaterReturnConnection
 
-  # In to the junction
-  - "@id": this:VS01-BuildingHeatingWaterSupply
-    "@type": 
-      - s223:InletConnectionPoint 
-    connectsThrough: this:BuildingHeatingWaterSupplyConnection
-
-  # Out from the junction 
-  - "@id": this:VS01-BuildingHeatingWaterReturn
-    "@type": 
-      - s223:OutletConnectionPoint 
-    connectsThrough: this:VS01-BuildingHeatingWaterReturnConnection
-
   # VV01 Conneciton Points
   - "@id": this:VV01-HeatExchangerPrimaryInlet
     "@type": 
@@ -424,7 +377,7 @@
   - "@id": this:VV01-HeatExchangerSecondaryOutlet
     "@type": 
       - s223:OutletConnectionPoint
-    connectsThrough: this:VV01-BuildingDomesticHotWaterSupplyConnection
+    connectsThrough: this:VV01-HeatExchangerSecondaryOutletConnection
 
   - "@id": this:VV01-InletValveInlet
     "@type": 
@@ -446,9 +399,14 @@
       - s223:OutletConnectionPoint
     connectsThrough: this:VV01-HeatExchangerSecondaryInletConnection
 
-  - "@id": this:VV01-BuildingDomesticHotWaterSupply
+  - "@id": this:VV01-BuildingDomesticHotWaterSupplyInlet
     "@type": 
       - s223:InletConnectionPoint
+    connectsThrough: this:VV01-HeatExchangerSecondaryOutletConnection
+
+  - "@id": this:VV01-BuildingDomesticHotWaterSupplyOutlet
+    "@type": 
+      - s223:OutletConnectionPoint
     connectsThrough: this:VV01-BuildingDomesticHotWaterSupplyConnection
 
   - "@id": this:VV01-BuildingDomesticHotWaterRecirculation
@@ -467,16 +425,6 @@
     connectsThrough: this:VV01-HeatExchangerSecondaryInletConnection
 
   # VP01 Connection Points
-  - "@id": this:VP01-DistrictHeatSupply
-    "@type": 
-      - s223:OutletConnectionPoint
-    connectsThrough: this:VP01-DistrictHeatSupplyConnection
-
-  - "@id": this:VP01-DistrictHeatReturn
-    "@type": 
-      - s223:InletConnectionPoint
-    connectsThrough: this:VP01-DistrictHeatReturnConnection
-
   - "@id": this:VP01-MeterInlet
     "@type": 
       - s223:InletConnectionPoint
@@ -488,16 +436,6 @@
     connectsThrough: this:this:VP01-DistrictHeatReturnConnection
 
   # KV01 Connection Points
-  - "@id": this:KV01-DistrictColdWaterSupply
-    "@type": 
-      - s223:OutletConnectionPoint
-    connectsThrough: this:KV01-DistrictColdWaterSupplyConnection
-
-  - "@id": this:KV01-BuildingDomesticColdWaterSupply
-    "@type": 
-      - s223:InletConnectionPoint
-    connectsThrough: this:KV01-DomesticColdWaterSupplyConnection
-
   - "@id": this:KV01-MeterInlet
     "@type": 
       - s223:InletConnectionPoint
@@ -554,6 +492,11 @@
     "@type": 
       - s223:Connection
     hasMedium: s223:ater-GlycolSolution
+
+  - "@id": this:VV01-HeatExchangerSecondaryOutletConnection
+    "@type": 
+      - s223:Connection
+    hasMedium: s223:Water
 
   - "@id": this:VV01-BuildingDomesticHotWaterSupplyConnection
     "@type": 
@@ -749,7 +692,7 @@
     hasUnit: unit:KiloW
 
   # KV01 Properties
-  - "@id": this:KV01-DistrictColdWaterSupplyFLow
+  - "@id": this:KV01-DistrictColdWaterSupplyFlow
     "@type": 
       - s223:QuantifiableObservableProperty
       - brick:Point
@@ -760,46 +703,7 @@
     hasUnit: unit:M3-PER-MIN
     hasAspect: s223:Role-Supply
 
-  # Domain Space
+  # Domain Spaces
   - "@id": this:OutsideAirSpace
     "@type": 
       - s223:DomainSpace
-
-  # Embedded Control Sequence Properties
-  - "@id": this:VS01-HeatingWaterSupplyTemperatureMeasuredValue
-    "@type": 
-      - s223:QuantifiableObservableProperty
-
-  - "@id": this:VS01-HeatingWaterSupplyTemperatureSetpoint
-    "@type": 
-      - s223:QuantifiableObservableProperty
-    hasAspect: s223:Aspect-Setpoint
-
-  - "@id": this:VS01-HeatingWaterSupplyTemperatureControlOutput
-    "@type": 
-      - s223:ActuatableProperty
-
-  # Functions
-  - "@id": this:HeatingWaterSupplyTemperatureControlInput
-    "@type": 
-      - s223:Function
-    hasInput: this:VS01-HeatingWaterSupplyTemperature
-    hasOutput: this:VS01-HeatingWaterSupplyTemperatureMeasuredValue
-    controlObjectType: ktco:AnalogInput
-
-  - "@id": this:HeatingWaterSupplyTemperatureControl
-    "@type": 
-      - s223:Function
-    hasAspect: s223:Role-Controller
-    hasInput: 
-      - this:VS01-HeatingWaterSupplyTemperatureMeasuredValue
-      - this:VS01-HeatingWaterSupplyTemperatureSetpoint
-    hasOutput: this:VS01-HeatingWaterSupplyTemperatureControlOutput
-    controlObjectType: ktco:LoopRegulator
-
-  - "@id": this:HeatingWaterSupplyTemperatureControlOutput
-    "@type": 
-      - s223:Function
-    hasInput: this:VS01-HeatingWaterSupplyTemperatureControlOutput
-    hasOutput: this:VS01-InletValvePosition
-    controlObjectType: ktco:AnalogOutput
