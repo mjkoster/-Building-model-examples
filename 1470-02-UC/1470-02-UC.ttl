@@ -98,7 +98,7 @@
 
 <urn:ex/VV01-DomesticHotWaterReturnTemperatureSensor>
   a ns0:TemperatureSensor ;
-  ns0:hasObservationLocation <urn:VV01-BuildingDomesticHotWaterRecirculationConnection> ;
+  ns0:hasObservationLocation <urn:ex/VV01-BuildingDomesticHotWaterRecirculationConnection> ;
   ns0:observes <urn:ex/VV01-DomesticHotWaterReturnTemperature> .
 
 <urn:ex/VP01>
@@ -108,12 +108,12 @@
 
 <urn:ex/VP01-DHSupplyTemperatureSensor>
   a ns0:TemperatureSensor ;
-  ns0:hasObservationLocation <urn:VP01-DistrictHeatSupplyConnection> ;
+  ns0:hasObservationLocation <urn:ex/VP01-DistrictHeatSupplyConnection> ;
   ns0:observes <urn:ex/VP01-DHSupplyTemperature> .
 
 <urn:ex/VP01-DHReturnTemperatureSensor>
   a ns0:TemperatureSensor ;
-  ns0:hasObservationLocation <urn:VP01-DistrictHeatReturnConnection> ;
+  ns0:hasObservationLocation <urn:ex/VP01-DistrictHeatReturnConnection> ;
   ns0:observes <urn:ex/VP01-DHReturnTemperature> .
 
 <urn:ex/VP01-DHDifferentialTemperatureSensor>
@@ -212,6 +212,7 @@
   ns2:hasUnit <http://qudt.org/vocab/unit/KiloPa> ;
   ns3:isPointOf <urn:ex/VS01-BuildingHeatingWaterReturnConnection> .
 
+<urn:ex/VS01-OutsideAirSpace> a ns0:DomainSpace .
 <urn:ex/VS01-OutsideAirTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
   ns1:referenceDesignator "VS01-GT31"^^xsd:string ;
@@ -279,6 +280,10 @@
   ns2:hasUnit <http://qudt.org/vocab/unit/DEG_C> ;
   ns3:isPointOf <urn:ex/VV01-BuildingDomesticHotWaterSupplyConnection> .
 
+<urn:ex/VV01-BuildingDomesticHotWaterRecirculationConnection>
+  a ns0:Connection ;
+  ns0:hasMedium ns0:Water .
+
 <urn:ex/VV01-DomesticHotWaterReturnTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
   ns0:hasAspect ns0:Role-Return ;
@@ -307,6 +312,10 @@
   ns2:hasUnit <http://qudt.org/vocab/unit/M3-PER-MIN> ;
   ns3:isPointOf <urn:ex/VV01-HeatExchangerSecondaryInletConnection> .
 
+<urn:ex/VP01-DistrictHeatSupplyConnection>
+  a ns0:Connection ;
+  ns0:hasMedium ns0:Water-GlycolSolution .
+
 <urn:ex/VP01-DHSupplyTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
   ns0:hasAspect ns0:Role-Return ;
@@ -314,6 +323,10 @@
   ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
   ns2:hasUnit <http://qudt.org/vocab/unit/DEG_C> ;
   ns3:isPointOf <urn:ex/VP01-DistrictHeatSupplyConnection> .
+
+<urn:ex/VP01-DistrictHeatReturnConnection>
+  a ns0:Connection ;
+  ns0:hasMedium ns0:Water-GlycolSolution .
 
 <urn:ex/VP01-DHReturnTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
@@ -379,10 +392,6 @@
   a ns0:Connection ;
   ns0:hasMedium ns0:Water-GlycolSolution .
 
-<urn:ex/VP01-DistrictHeatSupplyConnection>
-  a ns0:Connection ;
-  ns0:hasMedium ns0:Water-GlycolSolution .
-
 <urn:ex/VS01-HeatExchangerSecondaryOutletConnection>
   a ns0:Connection ;
   ns0:hasMedium ns0:Water-GlycolSolution .
@@ -407,10 +416,6 @@
   a ns0:Connection ;
   ns0:hasMedium ns0:Water .
 
-<urn:ex/VV01-BuildingDomesticHotWaterRecirculationConnection>
-  a ns0:Connection ;
-  ns0:hasMedium ns0:Water .
-
 <urn:ex/KV01-DomesticColdWaterSupplyConnection>
   a ns0:Connection ;
   ns0:hasMedium ns0:Water .
@@ -419,10 +424,6 @@
   a ns0:Connection ;
   ns0:hasMedium ns0:Water .
 
-<urn:ex/VP01-DistrictHeatReturnConnection>
-  a ns0:Connection ;
-  ns0:hasMedium ns0:Water-GlycolSolution .
-
 <urn:ex/KV01-DistrictColdWaterSupplyFlow>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
   ns0:hasAspect ns0:Role-Supply ;
@@ -430,5 +431,3 @@
   ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
   ns2:hasUnit <http://qudt.org/vocab/unit/M3-PER-MIN> ;
   ns3:isPointOf <urn:ex/VV01-DistrictColdWaterSupplyonnection> .
-
-<urn:ex/OutsideAirSpace> a ns0:DomainSpace .

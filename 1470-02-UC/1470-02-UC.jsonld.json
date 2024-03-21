@@ -882,7 +882,7 @@
       "hasAspect": "s223:Role-Supply"
     },
     {
-      "@id": "this:OutsideAirSpace",
+      "@id": "this:VS01-OutsideAirSpace",
       "@type": [
         "s223:DomainSpace"
       ]
