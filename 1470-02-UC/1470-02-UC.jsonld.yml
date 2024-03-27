@@ -147,6 +147,7 @@
   - "@id": this:VS01-InletValveActuator
     "@type": 
       - s223:Actuator
+      - s223:Equipment
     actuates: "this:VS01-InletValve"
     commandedByProperty: this:VS01-InletValvePosition
 
@@ -154,6 +155,7 @@
     description: Heating Loop Pump
     "@type": 
       - s223:Pump
+      - s223:Equipment
     hasConnectionPoint:
       - this:VS01-PumpInlet
       - this:VS01-PumpOutlet
@@ -161,12 +163,14 @@
   - "@id": this:VS01-PumpActuator
     "@type": 
       - s223:Actuator
+      - s223:Equipment
     actuates: this:VS01-Pump
     commandedByProperty: this:VS01-PumpControl
 
   - "@id": this:VS01-ExpansionTank
     "@type": 
       - brick:Thermal_Expansion_Tank
+      - s223:Equipment
     description: Heating Loop Expansion Tank
     hasAspect: s223:Role-Expansion
     hasConnectionPoint:
@@ -175,24 +179,32 @@
   - "@id": this:VS01-HeatingWaterSupplyTemperatureSensor
     "@type": 
       - s223:TemperatureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VS01-HeatingWaterSupplyTemperature
     hasObservationLocation: this:VS01-BuildingHeatingWaterSupplyConnection
 
   - "@id": this:VS01-HeatingWaterReturnTemperatureSensor
     "@type": 
       - s223:TemperatureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VS01-HeatingWaterReturnTemperature
     hasObservationLocation: this:VS01-BuildingHeatingWaterReturnConnection
 
   - "@id": this:VS01-HeatingWaterPressureSensor
     "@type": 
       - s223:PressureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VS01-HeatingWaterReturnPressure
     hasObservationLocation: this:VS01-BuildingHeatingWaterReturnConnection
 
   - "@id": this:VS01-OutsideAirTemperatureSensor
     "@type": 
       - s223:TemperatureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VS01-OutsideAirTemperature
     hasObservationLocation: this:VS01-OutsideAirSpace
 
@@ -222,6 +234,7 @@
   - "@id": this:VV01-InletValveActuator
     "@type": 
       - s223:Actuator
+      - s223:Equipment
     actuates: this:VV01-InletValve
     commandedByProperty: this:VV01-InletValvePosition
 
@@ -229,6 +242,7 @@
     description: Domestic Hot Water Pump
     "@type": 
       - s223:Pump
+      - s223:Equipment
     hasConnectionPoint:
       - this:VV01-PumpInlet
       - this:VV01-PumpOutlet
@@ -236,24 +250,30 @@
   - "@id": this:VV01-PumpActuator
     "@type": 
       - s223:Actuator
+      - s223:Equipment
     actuates: this:VV01-Pump
     commandedByProperty: this:VV01-PumpControl
 
   - "@id": this:VV01-DomesticHotWaterSupplyTemperatureSensor
     "@type": 
       - s223:TemperatureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VV01-DomesticHotWaterSupplyTemperature
     hasObservationLocation: this:VV01-BuildingDomesticHotWaterSupplyConnection
 
   - "@id": this:VV01-DomesticHotWaterReturnTemperatureSensor
     "@type": 
       - s223:TemperatureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VV01-DomesticHotWaterReturnTemperature
     hasObservationLocation: VV01-BuildingDomesticHotWaterRecirculationConnection
 
   - "@id": this:VV01-DomesticHotWaterMakeupColdWaterMeter
     "@type": 
       - s223:FlowMeter
+      - s223:Equipment
     hasConnectionPoint:
       - this:VV01-MeterInlet
       - this:VV01-MeterOutlet
@@ -264,39 +284,49 @@
   - "@id": this:VP01-DHSupplyTemperatureSensor
     "@type": 
       - s223:TemperatureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VP01-DHSupplyTemperature
-    hasObservationLocation: VP01-DistrictHeatSupplyConnection
+    hasObservationLocation: this:VP01-DistrictHeatSupplyConnection
 
   - "@id": this:VP01-DHReturnTemperatureSensor
     "@type": 
       - s223:TemperatureSensor
+      - s223:Sensor
+      - s223:Equipment
     observes: this:VP01-DHReturnTemperature
-    hasObservationLocation: VP01-DistrictHeatReturnConnection
+    hasObservationLocation: this:VV01-HeatExchangerPrimaryOutletConnection
 
   - "@id": this:VP01-DHDifferentialTemperatureSensor
     "@type": 
+      - s223:Sensor
       - s223:TemperatureSensor
+      - s223:DifferentialSensor
+      - s223:Equipment
     observes: this:VP01-DHDifferentialTemperature
-    hasObservationLocation: 
+    hasObservationLocationHigh: this:VP01-DistrictHeatSupplyConnection
+    hasObservationLocationLow: this:VV01-HeatExchangerPrimaryOutletConnection
 
   - "@id": this:VP01-DHSupplyPowerMeter
     "@type": 
       - s223:PowerMeter
+      - s223:Equipment
     hasConnectionPoint:
       - this:VP01-MeterInlet
       - this:VP01-MeterOutlet
     observes: this:VP01-DHSupplyPower
-    hasObservationLocation: 
+    hasObservationLocation: this:VP01-DistrictHeatReturnConnection
 
   # Equipment - KV01
   - "@id": this:KV01-DomesticColdWaterSupplyMeter
     "@type": 
       - s223:FlowMeter
+      - s223:Equipment
     hasConnectionPoint:
       - this:KV01-MeterInlet
       - this:KV01-MeterOutlet
     observes: this:KV01-DomesticColdWaterSupplyFlow
-    hasObservationLocation: 
+    hasObservationLocation: this:KV01-DomesticColdWaterSupplyConnection
 
   # Junctions
   - "@id": this:VV01-BuildingDomesticHotWaterSupplyJunction
