@@ -52,6 +52,18 @@
       "@id": "s223:hasAspect",
       "@type": "@id"
     },
+    "hasRole": {
+      "@id": "s223:hasRole",
+      "@type": "@id"
+    },
+    "hasDomain": {
+      "@id": "s223:hasDomain",
+      "@type": "@id"
+    },
+    "encloses": {
+      "@id": "s223:encloses",
+      "@type": "@id"
+    },
     "hasInput": {
       "@id": "s223:hasInput",
       "@type": "@id"
@@ -70,6 +82,10 @@
     },
     "hasUnit": {
       "@id": "qudt:hasUnit",
+      "@type": "@id"
+    },
+    "hasEnumerationKind": {
+      "@id": "s223:hasEnumerationKind",
       "@type": "@id"
     },
     "controlObjectType": {
@@ -137,7 +153,7 @@
         "s223:System"
       ],
       "hasMember": [
-        "this:KV01-DomesticColdWaterSupplyMeter"
+        "this:KV01-DistrictColdWaterSupplyMeter"
       ]
     },
     {
@@ -204,7 +220,7 @@
         "s223:Equipment"
       ],
       "description": "Heating Loop Expansion Tank",
-      "hasAspect": "s223:Role-Expansion",
+      "hasRole": "s223:Role-Expansion",
       "hasConnectionPoint": [
         "this:VS01-ExpansionTankConnectionPoint"
       ]
@@ -337,8 +353,7 @@
         "this:VV01-MeterInlet",
         "this:VV01-MeterOutlet"
       ],
-      "observes": "this:VV01-DomesticHotWaterMakeupColdWaterFlow",
-      "hasObservationLocation": null
+      "observes": "this:VV01-DomesticHotWaterMakeupColdWaterFlow"
     },
     {
       "@id": "this:VP01-DHSupplyTemperatureSensor",
@@ -382,11 +397,10 @@
         "this:VP01-MeterInlet",
         "this:VP01-MeterOutlet"
       ],
-      "observes": "this:VP01-DHSupplyPower",
-      "hasObservationLocation": "this:VP01-DistrictHeatReturnConnection"
+      "observes": "this:VP01-DHSupplyPower"
     },
     {
-      "@id": "this:KV01-DomesticColdWaterSupplyMeter",
+      "@id": "this:KV01-DistrictColdWaterSupplyMeter",
       "@type": [
         "s223:FlowMeter",
         "s223:Equipment"
@@ -395,14 +409,14 @@
         "this:KV01-MeterInlet",
         "this:KV01-MeterOutlet"
       ],
-      "observes": "this:KV01-DomesticColdWaterSupplyFlow",
-      "hasObservationLocation": "this:KV01-DomesticColdWaterSupplyConnection"
+      "observes": "this:KV01-DistrictColdWaterSupplyFlow"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
       "@type": [
         "s223:Junction"
       ],
+      "hasMedium": "s223:Medium-Water",
       "hasConnectionPoint": [
         "this:VV01-BuildingDomesticHotWaterSupplyInlet",
         "this:VV01-BuildingDomesticHotWaterSupplyOutlet",
@@ -582,7 +596,7 @@
       "@type": [
         "s223:OutletConnectionPoint"
       ],
-      "connectsThrough": "this:this:VP01-DistrictHeatReturnConnection"
+      "connectsThrough": "this:VP01-DistrictHeatReturnConnection"
     },
     {
       "@id": "this:KV01-MeterInlet",
@@ -652,7 +666,7 @@
       "@type": [
         "s223:Connection"
       ],
-      "hasMedium": "s223:Water"
+      "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VV01-HeatExchangerPrimaryOutletConnection",
@@ -666,21 +680,21 @@
       "@type": [
         "s223:Connection"
       ],
-      "hasMedium": "s223:Water"
+      "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterSupplyConnection",
       "@type": [
         "s223:Connection"
       ],
-      "hasMedium": "s223:Water"
+      "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterRecirculationConnection",
       "@type": [
         "s223:Connection"
       ],
-      "hasMedium": "s223:Water"
+      "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VP01-DistrictHeatSupplyConnection",
@@ -701,14 +715,14 @@
       "@type": [
         "s223:Connection"
       ],
-      "hasMedium": "s223:Water"
+      "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:KV01-DomesticColdWaterSupplyConnection",
       "@type": [
         "s223:Connection"
       ],
-      "hasMedium": "s223:Water"
+      "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VS01-HeatingWaterSupplyTemperature",
@@ -746,7 +760,7 @@
       "isPointOf": "this:VS01-BuildingHeatingWaterReturnConnection",
       "referenceDesignator": "VS01-GP61",
       "hasQuantityKind": "qudtqk:Pressure",
-      "hasUnit": "unit:KiloPa",
+      "hasUnit": "unit:KiloPA",
       "hasAspect": "s223:Role-Return"
     },
     {
@@ -767,9 +781,9 @@
         "s223:ActuatableProperty",
         "s223:EnumerableProperty",
         "brick:Point",
-        "brick:Actuator",
-        "s223:EnumerationKind-OnOff"
+        "brick:Actuator"
       ],
+      "hasEnumerationKind": "s223:EnumerationKind-OnOff",
       "isPointOf": "this:VS01-PumpActuator",
       "referenceDesignator": "VS01-P1"
     },
@@ -791,9 +805,9 @@
         "s223:ActuatableProperty",
         "s223:EnumerableProperty",
         "brick:Point",
-        "brick:Actuator",
-        "s223:EnumerationKind-OnOff"
+        "brick:Actuator"
       ],
+      "hasEnumerationKind": "s223:EnumerationKind-OnOff",
       "isPointOf": "this:VV01-PumpActuator",
       "referenceDesignator": "VV01-P1"
     },
@@ -912,10 +926,18 @@
       "hasAspect": "s223:Role-Supply"
     },
     {
+      "@id": "this:VS01-OutsideSpace",
+      "@type": [
+        "s223:PhysicalSpace"
+      ],
+      "encloses": "this:VS01-OutsideAirSpace"
+    },
+    {
       "@id": "this:VS01-OutsideAirSpace",
       "@type": [
         "s223:DomainSpace"
-      ]
+      ],
+      "hasDomain": "s223:Domain-HVAC"
     }
   ]
 }

@@ -48,6 +48,15 @@
   hasAspect:
     "@id": s223:hasAspect
     "@type": "@id"
+  hasRole:
+    "@id": s223:hasRole
+    "@type": "@id"
+  hasDomain:
+    "@id": s223:hasDomain
+    "@type": "@id"
+  encloses:
+    "@id": s223:encloses
+    "@type": "@id"
   hasInput:
     "@id": s223:hasInput
     "@type": "@id"
@@ -62,6 +71,9 @@
     "@type": "@id"
   hasUnit:
     "@id": qudt:hasUnit
+    "@type": "@id"
+  hasEnumerationKind:
+    "@id": s223:hasEnumerationKind
     "@type": "@id"
   controlObjectType:
     "@id": ktco:objectType
@@ -120,7 +132,7 @@
     "@type": 
       - s223:System
     hasMember:
-      - this:KV01-DomesticColdWaterSupplyMeter
+      - this:KV01-DistrictColdWaterSupplyMeter
 
   # Equipment - VS01
   - "@id": this:VS01-HeatExchanger
@@ -172,7 +184,7 @@
       - brick:Thermal_Expansion_Tank
       - s223:Equipment
     description: Heating Loop Expansion Tank
-    hasAspect: s223:Role-Expansion
+    hasRole: s223:Role-Expansion
     hasConnectionPoint:
       - this:VS01-ExpansionTankConnectionPoint
 
@@ -278,7 +290,6 @@
       - this:VV01-MeterInlet
       - this:VV01-MeterOutlet
     observes: this:VV01-DomesticHotWaterMakeupColdWaterFlow
-    hasObservationLocation: 
 
   # Equipment - VP01
   - "@id": this:VP01-DHSupplyTemperatureSensor
@@ -315,23 +326,22 @@
       - this:VP01-MeterInlet
       - this:VP01-MeterOutlet
     observes: this:VP01-DHSupplyPower
-    hasObservationLocation: this:VP01-DistrictHeatReturnConnection
 
   # Equipment - KV01
-  - "@id": this:KV01-DomesticColdWaterSupplyMeter
+  - "@id": this:KV01-DistrictColdWaterSupplyMeter
     "@type": 
       - s223:FlowMeter
       - s223:Equipment
     hasConnectionPoint:
       - this:KV01-MeterInlet
       - this:KV01-MeterOutlet
-    observes: this:KV01-DomesticColdWaterSupplyFlow
-    hasObservationLocation: this:KV01-DomesticColdWaterSupplyConnection
+    observes: this:KV01-DistrictColdWaterSupplyFlow
 
   # Junctions
   - "@id": this:VV01-BuildingDomesticHotWaterSupplyJunction
     "@type": 
       - s223:Junction
+    hasMedium: s223:Medium-Water
     hasConnectionPoint:
       - this:VV01-BuildingDomesticHotWaterSupplyInlet
       - this:VV01-BuildingDomesticHotWaterSupplyOutlet
@@ -463,7 +473,7 @@
   - "@id": this:VP01-MeterOutlet
     "@type": 
       - s223:OutletConnectionPoint
-    connectsThrough: this:this:VP01-DistrictHeatReturnConnection
+    connectsThrough: this:VP01-DistrictHeatReturnConnection
 
   # KV01 Connection Points
   - "@id": this:KV01-MeterInlet
@@ -516,7 +526,7 @@
   - "@id": this:VV01-HeatExchangerSecondaryInletConnection
     "@type": 
       - s223:Connection
-    hasMedium: s223:Water
+    hasMedium: s223:Medium-Water
 
   - "@id": this:VV01-HeatExchangerPrimaryOutletConnection
     "@type": 
@@ -526,17 +536,17 @@
   - "@id": this:VV01-HeatExchangerSecondaryOutletConnection
     "@type": 
       - s223:Connection
-    hasMedium: s223:Water
+    hasMedium: s223:Medium-Water
 
   - "@id": this:VV01-BuildingDomesticHotWaterSupplyConnection
     "@type": 
       - s223:Connection
-    hasMedium: s223:Water
+    hasMedium: s223:Medium-Water
 
   - "@id": this:VV01-BuildingDomesticHotWaterRecirculationConnection
     "@type": 
       - s223:Connection
-    hasMedium: s223:Water
+    hasMedium: s223:Medium-Water
 
   # VP01 Connections
   - "@id": this:VP01-DistrictHeatSupplyConnection
@@ -553,12 +563,12 @@
   - "@id": this:KV01-DistrictColdWaterSupplyConnection
     "@type": 
       - s223:Connection
-    hasMedium: s223:Water
+    hasMedium: s223:Medium-Water
 
   - "@id": this:KV01-DomesticColdWaterSupplyConnection
     "@type": 
       - s223:Connection
-    hasMedium: s223:Water
+    hasMedium: s223:Medium-Water
 
   # VS01 Properties
   - "@id": this:VS01-HeatingWaterSupplyTemperature
@@ -591,7 +601,7 @@
     isPointOf: this:VS01-BuildingHeatingWaterReturnConnection
     referenceDesignator: VS01-GP61
     hasQuantityKind: qudtqk:Pressure
-    hasUnit: unit:KiloPa
+    hasUnit: unit:KiloPA
     hasAspect: s223:Role-Return
 
   - "@id": this:VS01-InletValvePosition
@@ -610,7 +620,7 @@
       - s223:EnumerableProperty
       - brick:Point
       - brick:Actuator
-      - s223:EnumerationKind-OnOff
+    hasEnumerationKind: s223:EnumerationKind-OnOff
     isPointOf: this:VS01-PumpActuator
     referenceDesignator: VS01-P1
 
@@ -631,7 +641,7 @@
       - s223:EnumerableProperty
       - brick:Point
       - brick:Actuator
-      - s223:EnumerationKind-OnOff
+    hasEnumerationKind: s223:EnumerationKind-OnOff
     isPointOf: this:VV01-PumpActuator
     referenceDesignator: VV01-P1
 
@@ -733,7 +743,14 @@
     hasUnit: unit:M3-PER-MIN
     hasAspect: s223:Role-Supply
 
-  # Domain Spaces
+  # Spaces
+
+  - "@id": this:VS01-OutsideSpace
+    "@type": 
+      - s223:PhysicalSpace
+    encloses: this:VS01-OutsideAirSpace
+
   - "@id": this:VS01-OutsideAirSpace
     "@type": 
       - s223:DomainSpace
+    hasDomain: s223:Domain-HVAC

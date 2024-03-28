@@ -37,8 +37,8 @@
 
 <urn:ex/VS01-ExpansionTank>
   a <https://brickschema.org/schema/1.1/Brick#Thermal_Expansion_Tank>, ns0:Equipment ;
-  ns0:hasAspect ns0:Role-Expansion ;
   ns0:hasConnectionPoint <urn:ex/VS01-ExpansionTankConnectionPoint> ;
+  ns0:hasRole ns0:Role-Expansion ;
   dc11:description "Heating Loop Expansion Tank"^^xsd:string .
 
 <urn:ex/VS01-HeatingWaterSupplyTemperatureSensor>
@@ -122,14 +122,13 @@
 
 <urn:ex/KV01>
   a ns0:System ;
-  ns0:hasMember <urn:ex/KV01-DomesticColdWaterSupplyMeter> ;
+  ns0:hasMember <urn:ex/KV01-DistrictColdWaterSupplyMeter> ;
   dc11:description "Cold Water System"^^xsd:string .
 
-<urn:ex/KV01-DomesticColdWaterSupplyMeter>
+<urn:ex/KV01-DistrictColdWaterSupplyMeter>
   a ns0:FlowMeter, ns0:Equipment ;
   ns0:hasConnectionPoint <urn:ex/KV01-MeterInlet>, <urn:ex/KV01-MeterOutlet> ;
-  ns0:hasObservationLocation <urn:ex/KV01-DomesticColdWaterSupplyConnection> ;
-  ns0:observes <urn:ex/KV01-DomesticColdWaterSupplyFlow> .
+  ns0:observes <urn:ex/KV01-DistrictColdWaterSupplyFlow> .
 
 <urn:ex/VS01-HeatExchangerPrimaryInlet>
   a ns0:InletConnectionPoint ;
@@ -171,7 +170,8 @@
   ns0:connectsThrough <urn:ex/VS01-BuildingHeatingWaterSupplyConnection> .
 
 <urn:ex/VS01-PumpControl>
-  a ns0:ActuatableProperty, ns0:EnumerableProperty, ns3:Point, ns3:Actuator, ns0:EnumerationKind-OnOff ;
+  a ns0:ActuatableProperty, ns0:EnumerableProperty, ns3:Point, ns3:Actuator ;
+  ns0:hasEnumerationKind ns0:EnumerationKind-OnOff ;
   ns1:referenceDesignator "VS01-P1"^^xsd:string ;
   ns3:isPointOf <urn:ex/VS01-PumpActuator> .
 
@@ -210,10 +210,13 @@
   ns0:hasAspect ns0:Role-Return ;
   ns1:referenceDesignator "VS01-GP61"^^xsd:string ;
   ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/Pressure> ;
-  ns2:hasUnit <http://qudt.org/vocab/unit/KiloPa> ;
+  ns2:hasUnit <http://qudt.org/vocab/unit/KiloPA> ;
   ns3:isPointOf <urn:ex/VS01-BuildingHeatingWaterReturnConnection> .
 
-<urn:ex/VS01-OutsideAirSpace> a ns0:DomainSpace .
+<urn:ex/VS01-OutsideAirSpace>
+  a ns0:DomainSpace ;
+  ns0:hasDomain ns0:Domain-HVAC .
+
 <urn:ex/VS01-OutsideAirTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
   ns1:referenceDesignator "VS01-GT31"^^xsd:string ;
@@ -265,13 +268,14 @@
   ns0:connectsThrough <urn:ex/VV01-HeatExchangerSecondaryInletConnection> .
 
 <urn:ex/VV01-PumpControl>
-  a ns0:ActuatableProperty, ns0:EnumerableProperty, ns3:Point, ns3:Actuator, ns0:EnumerationKind-OnOff ;
+  a ns0:ActuatableProperty, ns0:EnumerableProperty, ns3:Point, ns3:Actuator ;
+  ns0:hasEnumerationKind ns0:EnumerationKind-OnOff ;
   ns1:referenceDesignator "VV01-P1"^^xsd:string ;
   ns3:isPointOf <urn:ex/VV01-PumpActuator> .
 
 <urn:ex/VV01-BuildingDomesticHotWaterSupplyConnection>
   a ns0:Connection ;
-  ns0:hasMedium ns0:Water .
+  ns0:hasMedium ns0:Medium-Water .
 
 <urn:ex/VV01-DomesticHotWaterSupplyTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
@@ -283,7 +287,7 @@
 
 <urn:ex/VV01-BuildingDomesticHotWaterRecirculationConnection>
   a ns0:Connection ;
-  ns0:hasMedium ns0:Water .
+  ns0:hasMedium ns0:Medium-Water .
 
 <urn:ex/VV01-DomesticHotWaterReturnTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
@@ -348,7 +352,6 @@
 <urn:ex/VP01-DHSupplyPowerMeter>
   a ns0:PowerMeter, ns0:Equipment ;
   ns0:hasConnectionPoint <urn:ex/VP01-MeterInlet>, <urn:ex/VP01-MeterOutlet> ;
-  ns0:hasObservationLocation <urn:ex/VP01-DistrictHeatReturnConnection> ;
   ns0:observes <urn:ex/VP01-DHSupplyPower> .
 
 <urn:ex/VP01-MeterInlet>
@@ -357,11 +360,7 @@
 
 <urn:ex/VP01-MeterOutlet>
   a ns0:OutletConnectionPoint ;
-  ns0:connectsThrough <urn:ex/this:VP01-DistrictHeatReturnConnection> .
-
-<urn:ex/VP01-DistrictHeatReturnConnection>
-  a ns0:Connection ;
-  ns0:hasMedium ns0:Water-GlycolSolution .
+  ns0:connectsThrough <urn:ex/VP01-DistrictHeatReturnConnection> .
 
 <urn:ex/VP01-DHSupplyPower>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
@@ -378,13 +377,18 @@
   a ns0:OutletConnectionPoint ;
   ns0:connectsThrough <urn:ex/KV01-DomesticColdWaterSupplyConnection> .
 
-<urn:ex/KV01-DomesticColdWaterSupplyConnection>
-  a ns0:Connection ;
-  ns0:hasMedium ns0:Water .
+<urn:ex/KV01-DistrictColdWaterSupplyFlow>
+  a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
+  ns0:hasAspect ns0:Role-Supply ;
+  ns1:referenceDesignator "VV01-VM1"^^xsd:string ;
+  ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+  ns2:hasUnit <http://qudt.org/vocab/unit/M3-PER-MIN> ;
+  ns3:isPointOf <urn:ex/VV01-DistrictColdWaterSupplyonnection> .
 
 <urn:ex/VV01-BuildingDomesticHotWaterSupplyJunction>
   a ns0:Junction ;
-  ns0:hasConnectionPoint <urn:ex/VV01-BuildingDomesticHotWaterSupplyInlet>, <urn:ex/VV01-BuildingDomesticHotWaterSupplyOutlet>, <urn:ex/VV01-BuildingDomesticHotWaterRecirculation> .
+  ns0:hasConnectionPoint <urn:ex/VV01-BuildingDomesticHotWaterSupplyInlet>, <urn:ex/VV01-BuildingDomesticHotWaterSupplyOutlet>, <urn:ex/VV01-BuildingDomesticHotWaterRecirculation> ;
+  ns0:hasMedium ns0:Medium-Water .
 
 <urn:ex/VV01-BuildingDomesticHotWaterSupplyInlet>
   a ns0:InletConnectionPoint ;
@@ -416,20 +420,24 @@
 
 <urn:ex/VV01-HeatExchangerSecondaryInletConnection>
   a ns0:Connection ;
-  ns0:hasMedium ns0:Water .
+  ns0:hasMedium ns0:Medium-Water .
 
 <urn:ex/VV01-HeatExchangerSecondaryOutletConnection>
   a ns0:Connection ;
-  ns0:hasMedium ns0:Water .
+  ns0:hasMedium ns0:Medium-Water .
+
+<urn:ex/KV01-DomesticColdWaterSupplyConnection>
+  a ns0:Connection ;
+  ns0:hasMedium ns0:Medium-Water .
+
+<urn:ex/VP01-DistrictHeatReturnConnection>
+  a ns0:Connection ;
+  ns0:hasMedium ns0:Water-GlycolSolution .
 
 <urn:ex/KV01-DistrictColdWaterSupplyConnection>
   a ns0:Connection ;
-  ns0:hasMedium ns0:Water .
+  ns0:hasMedium ns0:Medium-Water .
 
-<urn:ex/KV01-DistrictColdWaterSupplyFlow>
-  a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
-  ns0:hasAspect ns0:Role-Supply ;
-  ns1:referenceDesignator "VV01-VM1"^^xsd:string ;
-  ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
-  ns2:hasUnit <http://qudt.org/vocab/unit/M3-PER-MIN> ;
-  ns3:isPointOf <urn:ex/VV01-DistrictColdWaterSupplyonnection> .
+<urn:ex/VS01-OutsideSpace>
+  a ns0:PhysicalSpace ;
+  ns0:encloses <urn:ex/VS01-OutsideAirSpace> .
