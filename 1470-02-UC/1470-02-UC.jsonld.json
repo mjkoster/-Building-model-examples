@@ -458,6 +458,218 @@
       ]
     },
     {
+      "@id": "this:VP01-DistrictHeatSupplyJunction",
+      "label": "District Heat Supply Junction",
+      "@type": [
+        "s223:Junction"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatSupplyJunctionInlet",
+        "this:VP01-DistrictHeatSupplyJunctionOutlet",
+        "this:VP01-DistrictHeatSupplyJunctionOutlet2"
+      ]
+    },
+    {
+      "@id": "this:VP01-DistrictHeatSupplyJunctionInlet",
+      "label": "VP01-District Heat Supply Junction Inlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VP01-DistrictHeatSupplyJunction"
+    },
+    {
+      "@id": "this:VP01-DistrictHeatSupplyJunctionOutlet",
+      "label": "VP01-District Heat Supply Junction Outlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatSupplyConnection",
+        "this:VP01-DistrictHeatSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VP01-DistrictHeatSupplyJunction",
+      "connectsThrough": "this:VP01-DistrictHeatSupplyConnection"
+    },
+    {
+      "@id": "this:VP01-DistrictHeatSupplyJunctionOutlet2",
+      "label": "VP01-District Heat Supply Junction Outlet2",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatSupplyConnection",
+        "this:VP01-DistrictHeatSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VP01-DistrictHeatSupplyJunction",
+      "connectsThrough": "this:VP01-DistrictHeatSupplyConnection"
+    },
+    {
+      "@id": "this:VP01-DistrictHeatReturnJunction",
+      "label": "District Heat Return Junction",
+      "@type": [
+        "s223:Junction"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatReturnJunctionInlet",
+        "this:VP01-DistrictHeatReturnJunctionInlet2",
+        "this:VP01-DistrictHeatReturnJunctionOutlet"
+      ]
+    },
+    {
+      "@id": "this:VP01-DistrictHeatReturnJunctionInlet",
+      "label": "VP01-District Heat Return Junction Inlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatReturnJunction",
+        "this:VP01-DistrictHeatReturnConnection"
+      ],
+      "isConnectionPointOf": "this:VP01-DistrictHeatSupplyJunction",
+      "connectsThrough": "this:VP01-DistrictHeatReturnConnection"
+    },
+    {
+      "@id": "this:VP01-DistrictHeatReturnJunctionInlet2",
+      "label": "VP01-District Heat Return Junction Inlet2",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatReturnJunction",
+        "this:VP01-DistrictHeatReturnConnection"
+      ],
+      "isConnectionPointOf": "this:VP01-DistrictHeatSupplyJunction",
+      "connectsThrough": "this:VP01-DistrictHeatReturnConnection"
+    },
+    {
+      "@id": "this:VP01-DistrictHeatReturnJunctionOutlet",
+      "label": "VP01-District Heat Return Junction Inlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatReturnJunction"
+      ],
+      "isConnectionPointOf": "this:VP01-DistrictHeatReturnJunction"
+    },
+    {
+      "@id": "this:VS01-BuildingHeatSupplyJunction",
+      "label": "Building Heat Supply Junction",
+      "@type": [
+        "s223:Junction"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatSupplyJunctionInlet",
+        "this:VS01-BuildingHeatSupplyJunctionInlet2",
+        "this:VS01-BuildingHeatSupplyJunctionOutlet"
+      ]
+    },
+    {
+      "@id": "this:VS01-BuildingHeatSupplyJunctionInlet",
+      "label": "VS01-Building Heat Supply Junction Inlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatSupplyJunction",
+        "this:VS01-BuildingHeatingWaterSupplyConnection"
+      ],
+      "isConnectionPointOf": "this:VS01-BuildingHeatSupplyJunction",
+      "connectsThrough": "this:VS01-BuildingHeatingWaterSupplyConnection"
+    },
+    {
+      "@id": "this:VS01-BuildingHeatSupplyJunctionInlet2",
+      "label": "VS01-Building Heat Supply Inlet2",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatSupplyJunction",
+        "this:VS01-BuildingHeatingWaterSupplyConnection"
+      ],
+      "isConnectionPointOf": "this:VS01-BuildingHeatSupplyJunction",
+      "connectsThrough": "this:VS01-BuildingHeatingWaterSupplyConnection"
+    },
+    {
+      "@id": "this:VS01-BuildingHeatSupplyJunctionOutlet",
+      "label": "VS01-Building Heat Supply Junction Inlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VS01-BuildingHeatSupplyJunction"
+    },
+    {
+      "@id": "this:VS01-BuildingHeatReturnJunction",
+      "label": "District Heat Return Junction",
+      "@type": [
+        "s223:Junction"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatReturnJunctionInlet",
+        "this:VS01-BuildingHeatReturnJunctionOutlet",
+        "this:VS01-BuildingHeatReturnJunctionOutlet2"
+      ]
+    },
+    {
+      "@id": "this:VS01-BuildingHeatReturnJunctionInlet",
+      "label": "VS01-Building Heat Return Junction Inlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatReturnJunction"
+      ],
+      "isConnectionPointOf": "this:VS01-BuildingHeatReturnJunction"
+    },
+    {
+      "@id": "this:VS01-BuildingHeatReturnJunctionOutlet",
+      "label": "VP01-District Heat Supply Junction Outlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatingWaterReturnConnection",
+        "this:VS01-BuildingHeatReturnJunction"
+      ],
+      "isConnectionPointOf": "this:VS01-BuildingHeatReturnJunction",
+      "connectsThrough": "this:VS01-BuildingHeatingWaterReturnConnection"
+    },
+    {
+      "@id": "this:VS01-BuildingHeatReturnJunctionOutlet2",
+      "label": "VS01-Building Heat Return Junction Outlet2",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatingWaterReturnConnection",
+        "this:VS01-BuildingHeatReturnJunction"
+      ],
+      "isConnectionPointOf": "this:VS01-BuildingHeatReturnJunction",
+      "connectsThrough": "this:VS01-BuildingHeatingWaterReturnConnection"
+    },
+    {
       "@id": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
       "label": "Building Domestic Hot Water Supply Junction",
       "@type": [
@@ -471,17 +683,150 @@
       ]
     },
     {
-      "@id": "this:KV01-DistrictColdJunction",
-      "label": "District Cold Junction",
+      "@id": "this:VV01-BuildingDomesticHotWaterSupplyInlet",
+      "label": "VV01-BuildingDomesticHotWaterSupplyInlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryOutletConnection",
+        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
+      "connectsThrough": "this:VV01-HeatExchangerSecondaryOutletConnection"
+    },
+    {
+      "@id": "this:VV01-BuildingDomesticHotWaterSupplyOutlet",
+      "label": "VV01-BuildingDomesticHotWaterSupplyOutlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction"
+    },
+    {
+      "@id": "this:VV01-BuildingDomesticHotWaterRecirculation",
+      "label": "VV01-BuildingDomesticHotWaterRecirculation",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-BuildingDomesticHotWaterRecirculationConnection",
+        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
+      "connectsThrough": "this:VV01-BuildingDomesticHotWaterRecirculationConnection"
+    },
+    {
+      "@id": "this:KV01-DistrictColdWaterJunction",
+      "label": "District Cold Water Junction",
       "@type": [
         "s223:Junction"
       ],
       "hasMedium": "s223:Medium-Water",
       "cnx": [
-        "this:KV01-DistrictColdJunctionInlet",
-        "this:KV01-DistrictColdJunctionOutlet",
-        "this:KV01-DistrictColdJunctionOutlet2"
+        "this:KV01-DistrictColdWaterJunctionInlet",
+        "this:KV01-DistrictColdWaterJunctionOutlet",
+        "this:KV01-DistrictColdWaterJunctionOutlet2"
       ]
+    },
+    {
+      "@id": "this:KV01-DistrictColdWaterJunctionInlet",
+      "label": "KV01-DistrictColdWaterJunctionInlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdWaterJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdWaterJunction"
+    },
+    {
+      "@id": "this:KV01-DistrictColdWaterJunctionOutlet2",
+      "label": "DistrictColdWaterJunctionOutlet2",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdWaterSupplyConnection",
+        "this:KV01-DistrictColdWaterJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdWaterJunction",
+      "connectsThrough": "this:KV01-DistrictColdWaterSupplyConnection"
+    },
+    {
+      "@id": "this:KV01-DistrictColdWaterJunctionOutlet",
+      "label": "KV01-DistrictColdWaterJunctionOutlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdWaterSupplyConnection",
+        "this:KV01-DistrictColdWaterJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdWaterJunction",
+      "connectsThrough": "this:KV01-DistrictColdWaterSupplyConnection"
+    },
+    {
+      "@id": "this:KV01-BuildingColdWaterJunction",
+      "label": "Building Cold Water Junction",
+      "@type": [
+        "s223:Junction"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-BuildingColdWaterJunctionInlet",
+        "this:KV01-BuildingColdWaterJunctionInlet2",
+        "this:KV01-BuildingColdWaterJunctionOutlet"
+      ]
+    },
+    {
+      "@id": "this:KV01-BuildingColdWaterJunctionInlet",
+      "label": "KV01-BuildingColdWaterJunctionInlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-BuildingColdWaterSupplyConnection",
+        "this:KV01-BuildingColdWaterJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-BuildingColdWaterJunction",
+      "connectsThrough": "this:KV01-BuildingColdWaterSupplyConnection"
+    },
+    {
+      "@id": "this:KV01-BuildingColdWaterJunctionInlet2",
+      "label": "BuildingColdWaterJunctionInlet2",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-BuildingColdWaterSupplyConnection",
+        "this:KV01-BuildingColdWaterJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-BuildingColdWaterJunction",
+      "connectsThrough": "this:KV01-BuildingColdWaterSupplyConnection"
+    },
+    {
+      "@id": "this:KV01-BuildingColdWaterJunctionOutlet",
+      "label": "KV01-BuildingColdWaterJunctionOutlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-BuildingColdWaterJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-BuildingColdWaterJunction"
     },
     {
       "@id": "this:VS01-HeatExchangerPrimaryInlet",
@@ -736,48 +1081,6 @@
       "connectsThrough": "this:VV01-HeatExchangerSecondaryInletConnection"
     },
     {
-      "@id": "this:VV01-BuildingDomesticHotWaterSupplyInlet",
-      "label": "VV01-BuildingDomesticHotWaterSupplyInlet",
-      "@type": [
-        "s223:InletConnectionPoint"
-      ],
-      "hasMedium": "s223:Medium-Water",
-      "cnx": [
-        "this:VV01-HeatExchangerSecondaryOutletConnection",
-        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
-      ],
-      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
-      "connectsThrough": "this:VV01-HeatExchangerSecondaryOutletConnection"
-    },
-    {
-      "@id": "this:VV01-BuildingDomesticHotWaterSupplyOutlet",
-      "label": "VV01-BuildingDomesticHotWaterSupplyOutlet",
-      "@type": [
-        "s223:OutletConnectionPoint"
-      ],
-      "hasMedium": "s223:Medium-Water",
-      "cnx": [
-        "this:VV01-BuildingDomesticHotWaterSupplyConnection",
-        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
-      ],
-      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
-      "connectsThrough": "this:VV01-BuildingDomesticHotWaterSupplyConnection"
-    },
-    {
-      "@id": "this:VV01-BuildingDomesticHotWaterRecirculation",
-      "label": "VV01-BuildingDomesticHotWaterRecirculation",
-      "@type": [
-        "s223:OutletConnectionPoint"
-      ],
-      "hasMedium": "s223:Medium-Water",
-      "cnx": [
-        "this:VV01-BuildingDomesticHotWaterRecirculationConnection",
-        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
-      ],
-      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
-      "connectsThrough": "this:VV01-BuildingDomesticHotWaterRecirculationConnection"
-    },
-    {
       "@id": "this:VV01-MeterInlet",
       "label": "VV01-MeterInlet",
       "@type": [
@@ -785,11 +1088,11 @@
       ],
       "hasMedium": "s223:Medium-Water",
       "cnx": [
-        "this:KV01-DomesticColdWaterSupplyConnection",
+        "this:KV01-BuildingColdWaterSupplyConnection",
         "this:VV01-DomesticHotWaterMakeupColdWaterMeter"
       ],
       "isConnectionPointOf": "this:VV01-DomesticHotWaterMakeupColdWaterMeter",
-      "connectsThrough": "this:KV01-DomesticColdWaterSupplyConnection"
+      "connectsThrough": "this:KV01-BuildingColdWaterSupplyConnection"
     },
     {
       "@id": "this:VV01-MeterOutlet",
@@ -834,46 +1137,6 @@
       "connectsThrough": "this:VP01-DistrictHeatReturnConnection"
     },
     {
-      "@id": "this:KV01-DistrictColdJunctionInlet",
-      "label": "KV01-DistrictColdJunctionInlet",
-      "@type": [
-        "s223:InletConnectionPoint"
-      ],
-      "hasMedium": "s223:Medium-Water",
-      "cnx": [
-        "this:KV01-DistrictColdJunction"
-      ],
-      "isConnectionPointOf": "this:KV01-DistrictColdJunction"
-    },
-    {
-      "@id": "this:KV01-DistrictColdJunctionOutlet2",
-      "label": "DistrictColdJunctionOutlet2",
-      "@type": [
-        "s223:OutletConnectionPoint"
-      ],
-      "hasMedium": "s223:Medium-Water",
-      "cnx": [
-        "this:KV01-DistrictColdWaterSupplyConnection",
-        "this:KV01-DistrictColdJunction"
-      ],
-      "isConnectionPointOf": "this:KV01-DistrictColdJunction",
-      "connectsThrough": "this:KV01-DistrictColdWaterSupplyConnection"
-    },
-    {
-      "@id": "this:KV01-DistrictColdJunctionOutlet",
-      "label": "KV01-DistrictColdJunctionOutlet",
-      "@type": [
-        "s223:OutletConnectionPoint"
-      ],
-      "hasMedium": "s223:Medium-Water",
-      "cnx": [
-        "this:KV01-DistrictColdWaterSupplyConnection",
-        "this:KV01-DistrictColdJunction"
-      ],
-      "isConnectionPointOf": "this:KV01-DistrictColdJunction",
-      "connectsThrough": "this:KV01-DistrictColdWaterSupplyConnection"
-    },
-    {
       "@id": "this:KV01-MeterInlet",
       "label": "KV01-MeterInlet",
       "@type": [
@@ -895,11 +1158,11 @@
       ],
       "hasMedium": "s223:Medium-Water",
       "cnx": [
-        "this:KV01-DomesticColdWaterSupplyConnection",
+        "this:KV01-BuildingColdWaterSupplyConnection",
         "this:KV01-DistrictColdWaterSupplyMeter"
       ],
       "isConnectionPointOf": "this:KV01-DistrictColdWaterSupplyMeter",
-      "connectsThrough": "this:KV01-DomesticColdWaterSupplyConnection"
+      "connectsThrough": "this:KV01-BuildingColdWaterSupplyConnection"
     },
     {
       "@id": "this:VS01-HeatExchangerPrimaryInletConnection",
@@ -945,7 +1208,9 @@
       ],
       "cnx": [
         "this:VS01-HeatExchangerSecondaryInlet",
-        "this:VS01-ExpansionTankConnectionPoint"
+        "this:VS01-ExpansionTankConnectionPoint",
+        "this:VS01-BuildingHeatReturnJunctionOutlet",
+        "this:VS01-BuildingHeatReturnJunctionOutlet2"
       ],
       "hasMedium": "s223:Water-GlycolSolution",
       "hasProperty": [
@@ -960,7 +1225,9 @@
         "s223:Connection"
       ],
       "cnx": [
-        "this:VS01-PumpOutlet"
+        "this:VS01-PumpOutlet",
+        "this:VS01-BuildingHeatSupplyJunctionInlet",
+        "this:VS01-BuildingHeatSupplyJunctionInlet2"
       ],
       "hasMedium": "s223:Water-GlycolSolution",
       "hasProperty": [
@@ -1017,17 +1284,6 @@
       "hasMedium": "s223:Medium-Water"
     },
     {
-      "@id": "this:VV01-BuildingDomesticHotWaterSupplyConnection",
-      "label": "VV01-BuildingDomesticHotWaterSupplyConnection",
-      "@type": [
-        "s223:Connection"
-      ],
-      "cnx": [
-        "this:VV01-BuildingDomesticHotWaterSupplyOutlet"
-      ],
-      "hasMedium": "s223:Medium-Water"
-    },
-    {
       "@id": "this:VV01-BuildingDomesticHotWaterRecirculationConnection",
       "label": "VV01-BuildingDomesticHotWaterRecirculationConnection",
       "@type": [
@@ -1047,7 +1303,9 @@
       ],
       "cnx": [
         "this:VS01-InletValveInlet",
-        "this:VV01-InletValveInlet"
+        "this:VV01-InletValveInlet",
+        "this:VP01-DistrictHeatSupplyJunctionOutlet",
+        "this:VP01-DistrictHeatSupplyJunctionOutlet2"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
@@ -1058,7 +1316,9 @@
         "s223:Connection"
       ],
       "cnx": [
-        "this:VP01-MeterOutlet"
+        "this:VP01-MeterOutlet",
+        "this:VP01-DistrictHeatReturnJunctionInlet",
+        "this:VP01-DistrictHeatReturnJunctionInlet2"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
@@ -1070,14 +1330,14 @@
       ],
       "cnx": [
         "this:KV01-MeterInlet",
-        "this:KV01-DistrictColdJunctionOutlet",
-        "this:KV01-DistrictColdJunctionOutlet2"
+        "this:KV01-DistrictColdWaterJunctionOutlet",
+        "this:KV01-DistrictColdWaterJunctionOutlet2"
       ],
       "hasMedium": "s223:Medium-Water"
     },
     {
-      "@id": "this:KV01-DomesticColdWaterSupplyConnection",
-      "label": "KV01-DomesticColdWaterSupplyConnection",
+      "@id": "this:KV01-BuildingColdWaterSupplyConnection",
+      "label": "KV01-BuildingColdWaterSupplyConnection",
       "@type": [
         "s223:Connection"
       ],

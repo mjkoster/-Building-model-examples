@@ -248,7 +248,7 @@
 
 <urn:ex/VS01-BuildingHeatingWaterSupplyConnection>
   a ns0:Connection ;
-  ns0:cnx <urn:ex/VS01-PumpOutlet> ;
+  ns0:cnx <urn:ex/VS01-PumpOutlet>, <urn:ex/VS01-BuildingHeatSupplyJunctionInlet>, <urn:ex/VS01-BuildingHeatSupplyJunctionInlet2> ;
   ns0:hasMedium ns0:Water-GlycolSolution ;
   ns0:hasProperty <urn:ex/VS01-HeatingWaterSupplyTemperature> ;
   rdfs:label "VS01-BuildingHeatingWaterSupplyConnection"^^xsd:string .
@@ -264,7 +264,7 @@
 
 <urn:ex/VS01-BuildingHeatingWaterReturnConnection>
   a ns0:Connection ;
-  ns0:cnx <urn:ex/VS01-HeatExchangerSecondaryInlet>, <urn:ex/VS01-ExpansionTankConnectionPoint> ;
+  ns0:cnx <urn:ex/VS01-HeatExchangerSecondaryInlet>, <urn:ex/VS01-ExpansionTankConnectionPoint>, <urn:ex/VS01-BuildingHeatReturnJunctionOutlet>, <urn:ex/VS01-BuildingHeatReturnJunctionOutlet2> ;
   ns0:hasMedium ns0:Water-GlycolSolution ;
   ns0:hasProperty <urn:ex/VS01-HeatingWaterReturnTemperature>, <urn:ex/VS01-HeatingWaterReturnPressure> ;
   rdfs:label "VS01-BuildingHeatingWaterReturnConnection"^^xsd:string .
@@ -425,8 +425,8 @@
 
 <urn:ex/VV01-MeterInlet>
   a ns0:InletConnectionPoint ;
-  ns0:cnx <urn:ex/KV01-DomesticColdWaterSupplyConnection>, <urn:ex/VV01-DomesticHotWaterMakeupColdWaterMeter> ;
-  ns0:connectsThrough <urn:ex/KV01-DomesticColdWaterSupplyConnection> ;
+  ns0:cnx <urn:ex/KV01-BuildingColdWaterSupplyConnection>, <urn:ex/VV01-DomesticHotWaterMakeupColdWaterMeter> ;
+  ns0:connectsThrough <urn:ex/KV01-BuildingColdWaterSupplyConnection> ;
   ns0:hasMedium ns0:Medium-Water ;
   ns0:isConnectionPointOf <urn:ex/VV01-DomesticHotWaterMakeupColdWaterMeter> ;
   rdfs:label "VV01-MeterInlet"^^xsd:string .
@@ -449,7 +449,7 @@
 
 <urn:ex/VP01-DistrictHeatSupplyConnection>
   a ns0:Connection ;
-  ns0:cnx <urn:ex/VS01-InletValveInlet>, <urn:ex/VV01-InletValveInlet> ;
+  ns0:cnx <urn:ex/VS01-InletValveInlet>, <urn:ex/VV01-InletValveInlet>, <urn:ex/VP01-DistrictHeatSupplyJunctionOutlet>, <urn:ex/VP01-DistrictHeatSupplyJunctionOutlet2> ;
   ns0:hasMedium ns0:Water-GlycolSolution ;
   rdfs:label "VP01-DistrictHeatSupplyConnection"^^xsd:string .
 
@@ -526,8 +526,8 @@
 
 <urn:ex/KV01-MeterOutlet>
   a ns0:OutletConnectionPoint ;
-  ns0:cnx <urn:ex/KV01-DomesticColdWaterSupplyConnection>, <urn:ex/KV01-DistrictColdWaterSupplyMeter> ;
-  ns0:connectsThrough <urn:ex/KV01-DomesticColdWaterSupplyConnection> ;
+  ns0:cnx <urn:ex/KV01-BuildingColdWaterSupplyConnection>, <urn:ex/KV01-DistrictColdWaterSupplyMeter> ;
+  ns0:connectsThrough <urn:ex/KV01-BuildingColdWaterSupplyConnection> ;
   ns0:hasMedium ns0:Medium-Water ;
   ns0:isConnectionPointOf <urn:ex/KV01-DistrictColdWaterSupplyMeter> ;
   rdfs:label "KV01-MeterOutlet"^^xsd:string .
@@ -540,6 +540,128 @@
   ns2:hasUnit <http://qudt.org/vocab/unit/M3-PER-MIN> ;
   rdfs:label "KV01-DistrictColdWaterSupplyFlow"^^xsd:string ;
   ns3:isPointOf <urn:ex/KV01-DistrictColdWaterSupplyMeter> .
+
+<urn:ex/VP01-DistrictHeatSupplyJunction>
+  a ns0:Junction ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatSupplyJunctionInlet>, <urn:ex/VP01-DistrictHeatSupplyJunctionOutlet>, <urn:ex/VP01-DistrictHeatSupplyJunctionOutlet2> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  rdfs:label "District Heat Supply Junction"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatSupplyJunctionInlet>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  rdfs:label "VP01-District Heat Supply Junction Inlet"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatSupplyJunctionOutlet>
+  a ns0:OutletConnectionPoint ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatSupplyConnection>, <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  ns0:connectsThrough <urn:ex/VP01-DistrictHeatSupplyConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  rdfs:label "VP01-District Heat Supply Junction Outlet"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatSupplyJunctionOutlet2>
+  a ns0:OutletConnectionPoint ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatSupplyConnection>, <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  ns0:connectsThrough <urn:ex/VP01-DistrictHeatSupplyConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  rdfs:label "VP01-District Heat Supply Junction Outlet2"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatReturnJunction>
+  a ns0:Junction ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatReturnJunctionInlet>, <urn:ex/VP01-DistrictHeatReturnJunctionInlet2>, <urn:ex/VP01-DistrictHeatReturnJunctionOutlet> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  rdfs:label "District Heat Return Junction"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatReturnJunctionInlet>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatReturnJunction>, <urn:ex/VP01-DistrictHeatReturnConnection> ;
+  ns0:connectsThrough <urn:ex/VP01-DistrictHeatReturnConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  rdfs:label "VP01-District Heat Return Junction Inlet"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatReturnJunctionInlet2>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatReturnJunction>, <urn:ex/VP01-DistrictHeatReturnConnection> ;
+  ns0:connectsThrough <urn:ex/VP01-DistrictHeatReturnConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VP01-DistrictHeatSupplyJunction> ;
+  rdfs:label "VP01-District Heat Return Junction Inlet2"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatReturnJunctionOutlet>
+  a ns0:OutletConnectionPoint ;
+  ns0:cnx <urn:ex/VP01-DistrictHeatReturnJunction> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VP01-DistrictHeatReturnJunction> ;
+  rdfs:label "VP01-District Heat Return Junction Inlet"^^xsd:string .
+
+<urn:ex/VP01-DistrictHeatReturnConnection>
+  a ns0:Connection ;
+  ns0:cnx <urn:ex/VP01-MeterOutlet>, <urn:ex/VP01-DistrictHeatReturnJunctionInlet>, <urn:ex/VP01-DistrictHeatReturnJunctionInlet2> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  rdfs:label "VP01-DistrictHeatReturnConnection"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatSupplyJunction>
+  a ns0:Junction ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatSupplyJunctionInlet>, <urn:ex/VS01-BuildingHeatSupplyJunctionInlet2>, <urn:ex/VS01-BuildingHeatSupplyJunctionOutlet> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  rdfs:label "Building Heat Supply Junction"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatSupplyJunctionInlet>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatSupplyJunction>, <urn:ex/VS01-BuildingHeatingWaterSupplyConnection> ;
+  ns0:connectsThrough <urn:ex/VS01-BuildingHeatingWaterSupplyConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VS01-BuildingHeatSupplyJunction> ;
+  rdfs:label "VS01-Building Heat Supply Junction Inlet"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatSupplyJunctionInlet2>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatSupplyJunction>, <urn:ex/VS01-BuildingHeatingWaterSupplyConnection> ;
+  ns0:connectsThrough <urn:ex/VS01-BuildingHeatingWaterSupplyConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VS01-BuildingHeatSupplyJunction> ;
+  rdfs:label "VS01-Building Heat Supply Inlet2"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatSupplyJunctionOutlet>
+  a ns0:OutletConnectionPoint ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatSupplyJunction> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VS01-BuildingHeatSupplyJunction> ;
+  rdfs:label "VS01-Building Heat Supply Junction Inlet"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatReturnJunction>
+  a ns0:Junction ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatReturnJunctionInlet>, <urn:ex/VS01-BuildingHeatReturnJunctionOutlet>, <urn:ex/VS01-BuildingHeatReturnJunctionOutlet2> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  rdfs:label "District Heat Return Junction"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatReturnJunctionInlet>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatReturnJunction> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VS01-BuildingHeatReturnJunction> ;
+  rdfs:label "VS01-Building Heat Return Junction Inlet"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatReturnJunctionOutlet>
+  a ns0:OutletConnectionPoint ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatingWaterReturnConnection>, <urn:ex/VS01-BuildingHeatReturnJunction> ;
+  ns0:connectsThrough <urn:ex/VS01-BuildingHeatingWaterReturnConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VS01-BuildingHeatReturnJunction> ;
+  rdfs:label "VP01-District Heat Supply Junction Outlet"^^xsd:string .
+
+<urn:ex/VS01-BuildingHeatReturnJunctionOutlet2>
+  a ns0:OutletConnectionPoint ;
+  ns0:cnx <urn:ex/VS01-BuildingHeatingWaterReturnConnection>, <urn:ex/VS01-BuildingHeatReturnJunction> ;
+  ns0:connectsThrough <urn:ex/VS01-BuildingHeatingWaterReturnConnection> ;
+  ns0:hasMedium ns0:Water-GlycolSolution ;
+  ns0:isConnectionPointOf <urn:ex/VS01-BuildingHeatReturnJunction> ;
+  rdfs:label "VS01-Building Heat Return Junction Outlet2"^^xsd:string .
 
 <urn:ex/VV01-BuildingDomesticHotWaterSupplyJunction>
   a ns0:Junction ;
@@ -557,8 +679,7 @@
 
 <urn:ex/VV01-BuildingDomesticHotWaterSupplyOutlet>
   a ns0:OutletConnectionPoint ;
-  ns0:cnx <urn:ex/VV01-BuildingDomesticHotWaterSupplyConnection>, <urn:ex/VV01-BuildingDomesticHotWaterSupplyJunction> ;
-  ns0:connectsThrough <urn:ex/VV01-BuildingDomesticHotWaterSupplyConnection> ;
+  ns0:cnx <urn:ex/VV01-BuildingDomesticHotWaterSupplyJunction> ;
   ns0:hasMedium ns0:Medium-Water ;
   ns0:isConnectionPointOf <urn:ex/VV01-BuildingDomesticHotWaterSupplyJunction> ;
   rdfs:label "VV01-BuildingDomesticHotWaterSupplyOutlet"^^xsd:string .
@@ -571,34 +692,75 @@
   ns0:isConnectionPointOf <urn:ex/VV01-BuildingDomesticHotWaterSupplyJunction> ;
   rdfs:label "VV01-BuildingDomesticHotWaterRecirculation"^^xsd:string .
 
-<urn:ex/KV01-DistrictColdJunction>
+<urn:ex/KV01-DistrictColdWaterJunction>
   a ns0:Junction ;
-  ns0:cnx <urn:ex/KV01-DistrictColdJunctionInlet>, <urn:ex/KV01-DistrictColdJunctionOutlet>, <urn:ex/KV01-DistrictColdJunctionOutlet2> ;
+  ns0:cnx <urn:ex/KV01-DistrictColdWaterJunctionInlet>, <urn:ex/KV01-DistrictColdWaterJunctionOutlet>, <urn:ex/KV01-DistrictColdWaterJunctionOutlet2> ;
   ns0:hasMedium ns0:Medium-Water ;
-  rdfs:label "District Cold Junction"^^xsd:string .
+  rdfs:label "District Cold Water Junction"^^xsd:string .
 
-<urn:ex/KV01-DistrictColdJunctionInlet>
+<urn:ex/KV01-DistrictColdWaterJunctionInlet>
   a ns0:InletConnectionPoint ;
-  ns0:cnx <urn:ex/KV01-DistrictColdJunction> ;
+  ns0:cnx <urn:ex/KV01-DistrictColdWaterJunction> ;
   ns0:hasMedium ns0:Medium-Water ;
-  ns0:isConnectionPointOf <urn:ex/KV01-DistrictColdJunction> ;
-  rdfs:label "KV01-DistrictColdJunctionInlet"^^xsd:string .
+  ns0:isConnectionPointOf <urn:ex/KV01-DistrictColdWaterJunction> ;
+  rdfs:label "KV01-DistrictColdWaterJunctionInlet"^^xsd:string .
 
-<urn:ex/KV01-DistrictColdJunctionOutlet>
+<urn:ex/KV01-DistrictColdWaterJunctionOutlet>
   a ns0:OutletConnectionPoint ;
-  ns0:cnx <urn:ex/KV01-DistrictColdWaterSupplyConnection>, <urn:ex/KV01-DistrictColdJunction> ;
+  ns0:cnx <urn:ex/KV01-DistrictColdWaterSupplyConnection>, <urn:ex/KV01-DistrictColdWaterJunction> ;
   ns0:connectsThrough <urn:ex/KV01-DistrictColdWaterSupplyConnection> ;
   ns0:hasMedium ns0:Medium-Water ;
-  ns0:isConnectionPointOf <urn:ex/KV01-DistrictColdJunction> ;
-  rdfs:label "KV01-DistrictColdJunctionOutlet"^^xsd:string .
+  ns0:isConnectionPointOf <urn:ex/KV01-DistrictColdWaterJunction> ;
+  rdfs:label "KV01-DistrictColdWaterJunctionOutlet"^^xsd:string .
 
-<urn:ex/KV01-DistrictColdJunctionOutlet2>
+<urn:ex/KV01-DistrictColdWaterJunctionOutlet2>
   a ns0:OutletConnectionPoint ;
-  ns0:cnx <urn:ex/KV01-DistrictColdWaterSupplyConnection>, <urn:ex/KV01-DistrictColdJunction> ;
+  ns0:cnx <urn:ex/KV01-DistrictColdWaterSupplyConnection>, <urn:ex/KV01-DistrictColdWaterJunction> ;
   ns0:connectsThrough <urn:ex/KV01-DistrictColdWaterSupplyConnection> ;
   ns0:hasMedium ns0:Medium-Water ;
-  ns0:isConnectionPointOf <urn:ex/KV01-DistrictColdJunction> ;
-  rdfs:label "DistrictColdJunctionOutlet2"^^xsd:string .
+  ns0:isConnectionPointOf <urn:ex/KV01-DistrictColdWaterJunction> ;
+  rdfs:label "DistrictColdWaterJunctionOutlet2"^^xsd:string .
+
+<urn:ex/KV01-DistrictColdWaterSupplyConnection>
+  a ns0:Connection ;
+  ns0:cnx <urn:ex/KV01-MeterInlet>, <urn:ex/KV01-DistrictColdWaterJunctionOutlet>, <urn:ex/KV01-DistrictColdWaterJunctionOutlet2> ;
+  ns0:hasMedium ns0:Medium-Water ;
+  rdfs:label "KV01-DistrictColdWaterSupplyConnection"^^xsd:string .
+
+<urn:ex/KV01-BuildingColdWaterJunction>
+  a ns0:Junction ;
+  ns0:cnx <urn:ex/KV01-BuildingColdWaterJunctionInlet>, <urn:ex/KV01-BuildingColdWaterJunctionInlet2>, <urn:ex/KV01-BuildingColdWaterJunctionOutlet> ;
+  ns0:hasMedium ns0:Medium-Water ;
+  rdfs:label "Building Cold Water Junction"^^xsd:string .
+
+<urn:ex/KV01-BuildingColdWaterJunctionInlet>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/KV01-BuildingColdWaterSupplyConnection>, <urn:ex/KV01-BuildingColdWaterJunction> ;
+  ns0:connectsThrough <urn:ex/KV01-BuildingColdWaterSupplyConnection> ;
+  ns0:hasMedium ns0:Medium-Water ;
+  ns0:isConnectionPointOf <urn:ex/KV01-BuildingColdWaterJunction> ;
+  rdfs:label "KV01-BuildingColdWaterJunctionInlet"^^xsd:string .
+
+<urn:ex/KV01-BuildingColdWaterJunctionInlet2>
+  a ns0:InletConnectionPoint ;
+  ns0:cnx <urn:ex/KV01-BuildingColdWaterSupplyConnection>, <urn:ex/KV01-BuildingColdWaterJunction> ;
+  ns0:connectsThrough <urn:ex/KV01-BuildingColdWaterSupplyConnection> ;
+  ns0:hasMedium ns0:Medium-Water ;
+  ns0:isConnectionPointOf <urn:ex/KV01-BuildingColdWaterJunction> ;
+  rdfs:label "BuildingColdWaterJunctionInlet2"^^xsd:string .
+
+<urn:ex/KV01-BuildingColdWaterJunctionOutlet>
+  a ns0:OutletConnectionPoint ;
+  ns0:cnx <urn:ex/KV01-BuildingColdWaterJunction> ;
+  ns0:hasMedium ns0:Medium-Water ;
+  ns0:isConnectionPointOf <urn:ex/KV01-BuildingColdWaterJunction> ;
+  rdfs:label "KV01-BuildingColdWaterJunctionOutlet"^^xsd:string .
+
+<urn:ex/KV01-BuildingColdWaterSupplyConnection>
+  a ns0:Connection ;
+  ns0:cnx <urn:ex/VV01-MeterInlet>, <urn:ex/KV01-MeterOutlet> ;
+  ns0:hasMedium ns0:Medium-Water ;
+  rdfs:label "KV01-BuildingColdWaterSupplyConnection"^^xsd:string .
 
 <urn:ex/VS01-HeatExchangerPrimaryInletConnection>
   a ns0:Connection ;
@@ -629,30 +791,6 @@
   ns0:cnx <urn:ex/VV01-HeatExchangerSecondaryInlet>, <urn:ex/VV01-PumpOutlet>, <urn:ex/VV01-MeterOutlet> ;
   ns0:hasMedium ns0:Medium-Water ;
   rdfs:label "VV01-HeatExchangerSecondaryInletConnection"^^xsd:string .
-
-<urn:ex/VV01-BuildingDomesticHotWaterSupplyConnection>
-  a ns0:Connection ;
-  ns0:cnx <urn:ex/VV01-BuildingDomesticHotWaterSupplyOutlet> ;
-  ns0:hasMedium ns0:Medium-Water ;
-  rdfs:label "VV01-BuildingDomesticHotWaterSupplyConnection"^^xsd:string .
-
-<urn:ex/KV01-DomesticColdWaterSupplyConnection>
-  a ns0:Connection ;
-  ns0:cnx <urn:ex/VV01-MeterInlet>, <urn:ex/KV01-MeterOutlet> ;
-  ns0:hasMedium ns0:Medium-Water ;
-  rdfs:label "KV01-DomesticColdWaterSupplyConnection"^^xsd:string .
-
-<urn:ex/VP01-DistrictHeatReturnConnection>
-  a ns0:Connection ;
-  ns0:cnx <urn:ex/VP01-MeterOutlet> ;
-  ns0:hasMedium ns0:Water-GlycolSolution ;
-  rdfs:label "VP01-DistrictHeatReturnConnection"^^xsd:string .
-
-<urn:ex/KV01-DistrictColdWaterSupplyConnection>
-  a ns0:Connection ;
-  ns0:cnx <urn:ex/KV01-MeterInlet>, <urn:ex/KV01-DistrictColdJunctionOutlet>, <urn:ex/KV01-DistrictColdJunctionOutlet2> ;
-  ns0:hasMedium ns0:Medium-Water ;
-  rdfs:label "KV01-DistrictColdWaterSupplyConnection"^^xsd:string .
 
 <urn:ex/VS01-OutsideSpace>
   a ns0:PhysicalSpace ;
