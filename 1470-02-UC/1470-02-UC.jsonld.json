@@ -10,14 +10,23 @@
     "unit": "http://qudt.org/vocab/unit/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "dc": "http://purl.org/dc/elements/1.1/",
     "dcterm": "http://purl.org/dc/terms/",
     "hasMember": {
       "@id": "s223:hasMember",
       "@type": "@id"
     },
+    "cnx": {
+      "@id": "s223:cnx",
+      "@type": "@id"
+    },
     "hasConnectionPoint": {
       "@id": "s223:hasConnectionPoint",
+      "@type": "@id"
+    },
+    "isConnectionPointOf": {
+      "@id": "s223:isConnectionPointOf",
       "@type": "@id"
     },
     "connectsThrough": {
@@ -46,6 +55,14 @@
     },
     "hasObservationLocation": {
       "@id": "s223:hasObservationLocation",
+      "@type": "@id"
+    },
+    "hasObservationLocationHigh": {
+      "@id": "s223:hasObservationLocationHigh",
+      "@type": "@id"
+    },
+    "hasObservationLocationLow": {
+      "@id": "s223:hasObservationLocationLow",
       "@type": "@id"
     },
     "hasAspect": {
@@ -93,12 +110,14 @@
       "@type": "@id"
     },
     "referenceDesignator": "ktcs:referenceDesignator",
-    "description": "dc:description"
+    "description": "dc:description",
+    "label": "rdfs:label"
   },
   "@graph": [
     {
       "@id": "this:VS01",
       "description": "Heating Water System",
+      "label": "Heating Water System",
       "@type": [
         "s223:System"
       ],
@@ -118,6 +137,7 @@
     {
       "@id": "this:VV01",
       "description": "Domestic Hot Water System",
+      "label": "Domestic Hot Water System",
       "@type": [
         "s223:System"
       ],
@@ -136,6 +156,7 @@
     {
       "@id": "this:VP01",
       "description": "District Heat Source System",
+      "label": "District Heat Source System",
       "@type": [
         "s223:System"
       ],
@@ -149,6 +170,7 @@
     {
       "@id": "this:KV01",
       "description": "Cold Water System",
+      "label": "Cold Water System",
       "@type": [
         "s223:System"
       ],
@@ -159,11 +181,12 @@
     {
       "@id": "this:VS01-HeatExchanger",
       "description": "Heating Loop Heat Exchanger",
+      "label": "Heating Loop Heat Exchanger",
       "@type": [
         "s223:Equipment",
         "s223:HeatExchanger"
       ],
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VS01-HeatExchangerPrimaryInlet",
         "this:VS01-HeatExchangerSecondaryInlet",
         "this:VS01-HeatExchangerPrimaryOutlet",
@@ -173,18 +196,20 @@
     {
       "@id": "this:VS01-InletValve",
       "description": "Heating Loop Temperature Control Valve",
+      "label": "Heating Loop Temperature Control Valve",
       "@type": [
         "s223:TwoWayValve",
         "s223:Valve",
         "s223:Equipment"
       ],
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VS01-InletValveInlet",
         "this:VS01-InletValveOutlet"
       ]
     },
     {
       "@id": "this:VS01-InletValveActuator",
+      "label": "Heating Loop Temperature Control Valve Actuator",
       "@type": [
         "s223:Actuator",
         "s223:Equipment"
@@ -195,17 +220,19 @@
     {
       "@id": "this:VS01-Pump",
       "description": "Heating Loop Pump",
+      "label": "Heating Loop Pump",
       "@type": [
         "s223:Pump",
         "s223:Equipment"
       ],
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VS01-PumpInlet",
         "this:VS01-PumpOutlet"
       ]
     },
     {
       "@id": "this:VS01-PumpActuator",
+      "label": "Heating Loop Pump Actuator",
       "@type": [
         "s223:Actuator",
         "s223:Equipment"
@@ -215,18 +242,20 @@
     },
     {
       "@id": "this:VS01-ExpansionTank",
+      "description": "Heating Loop Expansion Tank",
+      "label": "Heating Loop Expansion Tank",
       "@type": [
         "brick:Thermal_Expansion_Tank",
         "s223:Equipment"
       ],
-      "description": "Heating Loop Expansion Tank",
       "hasRole": "s223:Role-Expansion",
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VS01-ExpansionTankConnectionPoint"
       ]
     },
     {
       "@id": "this:VS01-HeatingWaterSupplyTemperatureSensor",
+      "label": "Heating Water Supply Temperature Sensor",
       "@type": [
         "s223:TemperatureSensor",
         "s223:Sensor",
@@ -237,6 +266,7 @@
     },
     {
       "@id": "this:VS01-HeatingWaterReturnTemperatureSensor",
+      "label": "Heating Water Return Temperature Sensor",
       "@type": [
         "s223:TemperatureSensor",
         "s223:Sensor",
@@ -247,6 +277,7 @@
     },
     {
       "@id": "this:VS01-HeatingWaterPressureSensor",
+      "label": "Heating Water Pressure Sensor",
       "@type": [
         "s223:PressureSensor",
         "s223:Sensor",
@@ -257,6 +288,7 @@
     },
     {
       "@id": "this:VS01-OutsideAirTemperatureSensor",
+      "label": "Outside Air Temperature Sensor",
       "@type": [
         "s223:TemperatureSensor",
         "s223:Sensor",
@@ -268,11 +300,12 @@
     {
       "@id": "this:VV01-HeatExchanger",
       "description": "Domestic Hot Water Heat Exchanger",
+      "label": "Domestic Hot Water Heat Exchanger",
       "@type": [
         "s223:Equipment",
         "s223:HeatExchanger"
       ],
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VV01-HeatExchangerPrimaryInlet",
         "this:VV01-HeatExchangerPrimaryCenterInlet",
         "this:VV01-HeatExchangerPrimaryOutlet",
@@ -283,18 +316,20 @@
     {
       "@id": "this:VV01-InletValve",
       "description": "Domestic Hot Water Temperature Control Valve",
+      "label": "Domestic Hot Water Temperature Control Valve",
       "@type": [
         "s223:TwoWayValve",
         "s223:Valve",
         "s223:Equipment"
       ],
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VV01-InletValveInlet",
         "this:VV01-InletValveOutlet"
       ]
     },
     {
       "@id": "this:VV01-InletValveActuator",
+      "label": "Domestic Hot Water Temperature Control Valve Actuator",
       "@type": [
         "s223:Actuator",
         "s223:Equipment"
@@ -305,17 +340,19 @@
     {
       "@id": "this:VV01-Pump",
       "description": "Domestic Hot Water Pump",
+      "label": "Domestic Hot Water Pump",
       "@type": [
         "s223:Pump",
         "s223:Equipment"
       ],
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VV01-PumpInlet",
         "this:VV01-PumpOutlet"
       ]
     },
     {
       "@id": "this:VV01-PumpActuator",
+      "label": "Domestic Hot Water Pump Actuator",
       "@type": [
         "s223:Actuator",
         "s223:Equipment"
@@ -325,38 +362,42 @@
     },
     {
       "@id": "this:VV01-DomesticHotWaterSupplyTemperatureSensor",
+      "label": "Domestic Hot Water Supply Temperature Sensor",
       "@type": [
         "s223:TemperatureSensor",
         "s223:Sensor",
         "s223:Equipment"
       ],
       "observes": "this:VV01-DomesticHotWaterSupplyTemperature",
-      "hasObservationLocation": "this:VV01-BuildingDomesticHotWaterSupplyConnection"
+      "hasObservationLocation": "this:VV01-HeatExchangerSecondaryOutletConnection"
     },
     {
       "@id": "this:VV01-DomesticHotWaterReturnTemperatureSensor",
+      "label": "Domestic Hot Water Return Temperature Sensor",
       "@type": [
         "s223:TemperatureSensor",
         "s223:Sensor",
         "s223:Equipment"
       ],
       "observes": "this:VV01-DomesticHotWaterReturnTemperature",
-      "hasObservationLocation": "VV01-BuildingDomesticHotWaterRecirculationConnection"
+      "hasObservationLocation": "this:VV01-BuildingDomesticHotWaterRecirculationConnection"
     },
     {
       "@id": "this:VV01-DomesticHotWaterMakeupColdWaterMeter",
+      "label": "Domestic Hot Water Makeup Cold Water Meter",
       "@type": [
         "s223:FlowMeter",
         "s223:Equipment"
       ],
-      "hasConnectionPoint": [
+      "hasProperty": "this:VV01-DomesticHotWaterMakeupColdWaterFlow",
+      "cnx": [
         "this:VV01-MeterInlet",
         "this:VV01-MeterOutlet"
-      ],
-      "observes": "this:VV01-DomesticHotWaterMakeupColdWaterFlow"
+      ]
     },
     {
       "@id": "this:VP01-DHSupplyTemperatureSensor",
+      "label": "DH Supply Temperature Sensor",
       "@type": [
         "s223:TemperatureSensor",
         "s223:Sensor",
@@ -367,6 +408,7 @@
     },
     {
       "@id": "this:VP01-DHReturnTemperatureSensor",
+      "label": "DH Return Temperature Sensor",
       "@type": [
         "s223:TemperatureSensor",
         "s223:Sensor",
@@ -377,6 +419,7 @@
     },
     {
       "@id": "this:VP01-DHDifferentialTemperatureSensor",
+      "label": "DH Differential Temperature Sensor",
       "@type": [
         "s223:Sensor",
         "s223:TemperatureSensor",
@@ -385,258 +428,524 @@
       ],
       "observes": "this:VP01-DHDifferentialTemperature",
       "hasObservationLocationHigh": "this:VP01-DistrictHeatSupplyConnection",
-      "hasObservationLocationLow": "this:VV01-HeatExchangerPrimaryOutletConnection"
+      "hasObservationLocationLow": "this:VV01-HeatExchangerPrimaryOutletConnection",
+      "hasObservationLocation": "this:VP01-DHSupplyPowerMeter"
     },
     {
       "@id": "this:VP01-DHSupplyPowerMeter",
+      "label": "DH Supply Power Meter",
       "@type": [
         "s223:PowerMeter",
         "s223:Equipment"
       ],
-      "hasConnectionPoint": [
+      "hasProperty": "this:VP01-DHSupplyPower",
+      "cnx": [
         "this:VP01-MeterInlet",
         "this:VP01-MeterOutlet"
-      ],
-      "observes": "this:VP01-DHSupplyPower"
+      ]
     },
     {
       "@id": "this:KV01-DistrictColdWaterSupplyMeter",
+      "label": "District Cold Water Supply Meter",
       "@type": [
         "s223:FlowMeter",
         "s223:Equipment"
       ],
-      "hasConnectionPoint": [
+      "hasProperty": "this:KV01-DistrictColdWaterSupplyFlow",
+      "cnx": [
         "this:KV01-MeterInlet",
         "this:KV01-MeterOutlet"
-      ],
-      "observes": "this:KV01-DistrictColdWaterSupplyFlow"
+      ]
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
+      "label": "Building Domestic Hot Water Supply Junction",
       "@type": [
         "s223:Junction"
       ],
       "hasMedium": "s223:Medium-Water",
-      "hasConnectionPoint": [
+      "cnx": [
         "this:VV01-BuildingDomesticHotWaterSupplyInlet",
         "this:VV01-BuildingDomesticHotWaterSupplyOutlet",
         "this:VV01-BuildingDomesticHotWaterRecirculation"
       ]
     },
     {
+      "@id": "this:KV01-DistrictColdJunction",
+      "label": "District Cold Junction",
+      "@type": [
+        "s223:Junction"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdJunctionInlet",
+        "this:KV01-DistrictColdJunctionOutlet",
+        "this:KV01-DistrictColdJunctionOutlet2"
+      ]
+    },
+    {
       "@id": "this:VS01-HeatExchangerPrimaryInlet",
+      "label": "VS01-HeatExchangerPrimaryInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-HeatExchangerPrimaryInletConnection",
+        "this:VS01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VS01-HeatExchanger",
       "connectsThrough": "this:VS01-HeatExchangerPrimaryInletConnection"
     },
     {
       "@id": "this:VS01-HeatExchangerSecondaryInlet",
+      "label": "VS01-HeatExchangerSecondaryInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatingWaterReturnConnection",
+        "this:VS01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VS01-HeatExchanger",
       "connectsThrough": "this:VS01-BuildingHeatingWaterReturnConnection"
     },
     {
       "@id": "this:VS01-InletValveInlet",
+      "label": "VS01-InletValveInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatSupplyConnection",
+        "this:VS01-InletValve"
+      ],
+      "isConnectionPointOf": "this:VS01-InletValve",
       "connectsThrough": "this:VP01-DistrictHeatSupplyConnection"
     },
     {
       "@id": "this:VS01-PumpInlet",
+      "label": "VS01-PumpInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-HeatExchangerSecondaryOutletConnection",
+        "this:VS01-Pump"
+      ],
+      "isConnectionPointOf": "this:VS01-Pump",
       "connectsThrough": "this:VS01-HeatExchangerSecondaryOutletConnection"
     },
     {
       "@id": "this:VS01-HeatExchangerPrimaryOutlet",
+      "label": "VS01-HeatExchangerPrimaryOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-HeatExchangerPrimaryOutletConnection",
+        "this:VS01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VS01-HeatExchanger",
       "connectsThrough": "this:VS01-HeatExchangerPrimaryOutletConnection"
     },
     {
       "@id": "this:VS01-HeatExchangerSecondaryOutlet",
+      "label": "VS01-HeatExchangerSecondaryOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-HeatExchangerSecondaryOutletConnection",
+        "this:VS01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VS01-HeatExchanger",
       "connectsThrough": "this:VS01-HeatExchangerSecondaryOutletConnection"
     },
     {
       "@id": "this:VS01-InletValveOutlet",
+      "label": "VS01-InletValveOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-HeatExchangerPrimaryInletConnection",
+        "this:VS01-InletValve"
+      ],
+      "isConnectionPointOf": "this:VS01-InletValve",
       "connectsThrough": "this:VS01-HeatExchangerPrimaryInletConnection"
     },
     {
       "@id": "this:VS01-PumpOutlet",
+      "label": "VS01-PumpOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatingWaterSupplyConnection",
+        "this:VS01-Pump"
+      ],
+      "isConnectionPointOf": "this:VS01-Pump",
       "connectsThrough": "this:VS01-BuildingHeatingWaterSupplyConnection"
     },
     {
       "@id": "this:VS01-ExpansionTankConnectionPoint",
+      "label": "VS01-ExpansionTankConnectionPoint",
       "@type": [
         "s223:BidirectionalConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-BuildingHeatingWaterReturnConnection",
+        "this:VS01-ExpansionTank"
+      ],
+      "isConnectionPointOf": "this:VS01-ExpansionTank",
       "connectsThrough": "this:VS01-BuildingHeatingWaterReturnConnection"
     },
     {
       "@id": "this:VV01-HeatExchangerPrimaryInlet",
+      "label": "VV01-HeatExchangerPrimaryInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VV01-HeatExchangerPrimaryInletConnection",
+        "this:VV01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VV01-HeatExchanger",
       "connectsThrough": "this:VV01-HeatExchangerPrimaryInletConnection"
     },
     {
       "@id": "this:VV01-HeatExchangerPrimaryCenterInlet",
+      "label": "VV01-HeatExchangerPrimaryCenterInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VS01-HeatExchangerPrimaryOutletConnection",
+        "this:VV01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VV01-HeatExchanger",
       "connectsThrough": "this:VS01-HeatExchangerPrimaryOutletConnection"
     },
     {
       "@id": "this:VV01-HeatExchangerPrimaryOutlet",
+      "label": "VV01-HeatExchangerPrimaryOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VV01-HeatExchangerPrimaryOutletConnection",
+        "this:VV01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VV01-HeatExchanger",
       "connectsThrough": "this:VV01-HeatExchangerPrimaryOutletConnection"
     },
     {
       "@id": "this:VV01-HeatExchangerSecondaryInlet",
+      "label": "VV01-HeatExchangerSecondaryInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryInletConnection",
+        "this:VV01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VV01-HeatExchanger",
       "connectsThrough": "this:VV01-HeatExchangerSecondaryInletConnection"
     },
     {
       "@id": "this:VV01-HeatExchangerSecondaryOutlet",
+      "label": "VV01-HeatExchangerSecondaryOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryOutletConnection",
+        "this:VV01-HeatExchanger"
+      ],
+      "isConnectionPointOf": "this:VV01-HeatExchanger",
       "connectsThrough": "this:VV01-HeatExchangerSecondaryOutletConnection"
     },
     {
       "@id": "this:VV01-InletValveInlet",
+      "label": "VV01-InletValveInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatSupplyConnection",
+        "this:VV01-InletValve"
+      ],
+      "isConnectionPointOf": "this:VV01-InletValve",
       "connectsThrough": "this:VP01-DistrictHeatSupplyConnection"
     },
     {
       "@id": "this:VV01-InletValveOutlet",
+      "label": "VV01-InletValveOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VV01-HeatExchangerPrimaryInletConnection",
+        "this:VV01-InletValve"
+      ],
+      "isConnectionPointOf": "this:VV01-InletValve",
       "connectsThrough": "this:VV01-HeatExchangerPrimaryInletConnection"
     },
     {
       "@id": "this:VV01-PumpInlet",
+      "label": "VV01-PumpInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-BuildingDomesticHotWaterRecirculationConnection",
+        "this:VV01-Pump"
+      ],
+      "isConnectionPointOf": "this:VV01-Pump",
       "connectsThrough": "this:VV01-BuildingDomesticHotWaterRecirculationConnection"
     },
     {
       "@id": "this:VV01-PumpOutlet",
+      "label": "VV01-PumpOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryInletConnection",
+        "this:VV01-Pump"
+      ],
+      "isConnectionPointOf": "this:VV01-Pump",
       "connectsThrough": "this:VV01-HeatExchangerSecondaryInletConnection"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterSupplyInlet",
+      "label": "VV01-BuildingDomesticHotWaterSupplyInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryOutletConnection",
+        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
       "connectsThrough": "this:VV01-HeatExchangerSecondaryOutletConnection"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterSupplyOutlet",
+      "label": "VV01-BuildingDomesticHotWaterSupplyOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-BuildingDomesticHotWaterSupplyConnection",
+        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
       "connectsThrough": "this:VV01-BuildingDomesticHotWaterSupplyConnection"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterRecirculation",
+      "label": "VV01-BuildingDomesticHotWaterRecirculation",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-BuildingDomesticHotWaterRecirculationConnection",
+        "this:VV01-BuildingDomesticHotWaterSupplyJunction"
+      ],
+      "isConnectionPointOf": "this:VV01-BuildingDomesticHotWaterSupplyJunction",
       "connectsThrough": "this:VV01-BuildingDomesticHotWaterRecirculationConnection"
     },
     {
       "@id": "this:VV01-MeterInlet",
+      "label": "VV01-MeterInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DomesticColdWaterSupplyConnection",
+        "this:VV01-DomesticHotWaterMakeupColdWaterMeter"
+      ],
+      "isConnectionPointOf": "this:VV01-DomesticHotWaterMakeupColdWaterMeter",
       "connectsThrough": "this:KV01-DomesticColdWaterSupplyConnection"
     },
     {
       "@id": "this:VV01-MeterOutlet",
+      "label": "VV01-MeterOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryInletConnection",
+        "this:VV01-DomesticHotWaterMakeupColdWaterMeter"
+      ],
+      "isConnectionPointOf": "this:VV01-DomesticHotWaterMakeupColdWaterMeter",
       "connectsThrough": "this:VV01-HeatExchangerSecondaryInletConnection"
     },
     {
       "@id": "this:VP01-MeterInlet",
+      "label": "VP01-MeterInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VV01-HeatExchangerPrimaryOutletConnection",
+        "this:VP01-DHSupplyPowerMeter"
+      ],
+      "isConnectionPointOf": "this:VP01-DHSupplyPowerMeter",
       "connectsThrough": "this:VV01-HeatExchangerPrimaryOutletConnection"
     },
     {
       "@id": "this:VP01-MeterOutlet",
+      "label": "VP01-MeterOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Water-GlycolSolution",
+      "cnx": [
+        "this:VP01-DistrictHeatReturnConnection",
+        "this:VP01-DHSupplyPowerMeter"
+      ],
+      "isConnectionPointOf": "this:VP01-DHSupplyPowerMeter",
       "connectsThrough": "this:VP01-DistrictHeatReturnConnection"
     },
     {
-      "@id": "this:KV01-MeterInlet",
+      "@id": "this:KV01-DistrictColdJunctionInlet",
+      "label": "KV01-DistrictColdJunctionInlet",
       "@type": [
         "s223:InletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdJunction"
+    },
+    {
+      "@id": "this:KV01-DistrictColdJunctionOutlet2",
+      "label": "DistrictColdJunctionOutlet2",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdWaterSupplyConnection",
+        "this:KV01-DistrictColdJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdJunction",
+      "connectsThrough": "this:KV01-DistrictColdWaterSupplyConnection"
+    },
+    {
+      "@id": "this:KV01-DistrictColdJunctionOutlet",
+      "label": "KV01-DistrictColdJunctionOutlet",
+      "@type": [
+        "s223:OutletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdWaterSupplyConnection",
+        "this:KV01-DistrictColdJunction"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdJunction",
+      "connectsThrough": "this:KV01-DistrictColdWaterSupplyConnection"
+    },
+    {
+      "@id": "this:KV01-MeterInlet",
+      "label": "KV01-MeterInlet",
+      "@type": [
+        "s223:InletConnectionPoint"
+      ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DistrictColdWaterSupplyConnection",
+        "this:KV01-DistrictColdWaterSupplyMeter"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdWaterSupplyMeter",
       "connectsThrough": "this:KV01-DistrictColdWaterSupplyConnection"
     },
     {
       "@id": "this:KV01-MeterOutlet",
+      "label": "KV01-MeterOutlet",
       "@type": [
         "s223:OutletConnectionPoint"
       ],
+      "hasMedium": "s223:Medium-Water",
+      "cnx": [
+        "this:KV01-DomesticColdWaterSupplyConnection",
+        "this:KV01-DistrictColdWaterSupplyMeter"
+      ],
+      "isConnectionPointOf": "this:KV01-DistrictColdWaterSupplyMeter",
       "connectsThrough": "this:KV01-DomesticColdWaterSupplyConnection"
     },
     {
       "@id": "this:VS01-HeatExchangerPrimaryInletConnection",
+      "label": "VS01-HeatExchangerPrimaryInletConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VS01-HeatExchangerPrimaryInlet",
+        "this:VS01-InletValveOutlet"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
     {
       "@id": "this:VS01-HeatExchangerPrimaryOutletConnection",
+      "label": "VS01-HeatExchangerPrimaryOutletConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VS01-HeatExchangerPrimaryOutlet",
+        "this:VV01-HeatExchangerPrimaryCenterInlet"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
     {
       "@id": "this:VS01-HeatExchangerSecondaryOutletConnection",
+      "label": "VS01-HeatExchangerSecondaryOutletConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VS01-PumpInlet",
+        "this:VS01-HeatExchangerSecondaryOutlet"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
     {
       "@id": "this:VS01-BuildingHeatingWaterReturnConnection",
+      "label": "VS01-BuildingHeatingWaterReturnConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VS01-HeatExchangerSecondaryInlet",
+        "this:VS01-ExpansionTankConnectionPoint"
       ],
       "hasMedium": "s223:Water-GlycolSolution",
       "hasProperty": [
@@ -646,8 +955,12 @@
     },
     {
       "@id": "this:VS01-BuildingHeatingWaterSupplyConnection",
+      "label": "VS01-BuildingHeatingWaterSupplyConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VS01-PumpOutlet"
       ],
       "hasMedium": "s223:Water-GlycolSolution",
       "hasProperty": [
@@ -656,76 +969,127 @@
     },
     {
       "@id": "this:VV01-HeatExchangerPrimaryInletConnection",
+      "label": "VV01-HeatExchangerPrimaryInletConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VV01-HeatExchangerPrimaryInlet",
+        "this:VV01-InletValveOutlet"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
     {
       "@id": "this:VV01-HeatExchangerSecondaryInletConnection",
+      "label": "VV01-HeatExchangerSecondaryInletConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryInlet",
+        "this:VV01-PumpOutlet",
+        "this:VV01-MeterOutlet"
       ],
       "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VV01-HeatExchangerPrimaryOutletConnection",
+      "label": "VV01-HeatExchangerPrimaryOutletConnection",
       "@type": [
         "s223:Connection"
       ],
-      "hasMedium": "s223:ater-GlycolSolution"
+      "cnx": [
+        "this:VV01-HeatExchangerPrimaryOutlet",
+        "this:VP01-MeterInlet"
+      ],
+      "hasMedium": "s223:Water-GlycolSolution"
     },
     {
       "@id": "this:VV01-HeatExchangerSecondaryOutletConnection",
+      "label": "VV01-HeatExchangerSecondaryOutletConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VV01-HeatExchangerSecondaryOutlet",
+        "this:VV01-BuildingDomesticHotWaterSupplyInlet"
       ],
       "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterSupplyConnection",
+      "label": "VV01-BuildingDomesticHotWaterSupplyConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VV01-BuildingDomesticHotWaterSupplyOutlet"
       ],
       "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VV01-BuildingDomesticHotWaterRecirculationConnection",
+      "label": "VV01-BuildingDomesticHotWaterRecirculationConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VV01-PumpInlet",
+        "this:VV01-BuildingDomesticHotWaterRecirculation"
       ],
       "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VP01-DistrictHeatSupplyConnection",
+      "label": "VP01-DistrictHeatSupplyConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VS01-InletValveInlet",
+        "this:VV01-InletValveInlet"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
     {
       "@id": "this:VP01-DistrictHeatReturnConnection",
+      "label": "VP01-DistrictHeatReturnConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VP01-MeterOutlet"
       ],
       "hasMedium": "s223:Water-GlycolSolution"
     },
     {
       "@id": "this:KV01-DistrictColdWaterSupplyConnection",
+      "label": "KV01-DistrictColdWaterSupplyConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:KV01-MeterInlet",
+        "this:KV01-DistrictColdJunctionOutlet",
+        "this:KV01-DistrictColdJunctionOutlet2"
       ],
       "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:KV01-DomesticColdWaterSupplyConnection",
+      "label": "KV01-DomesticColdWaterSupplyConnection",
       "@type": [
         "s223:Connection"
+      ],
+      "cnx": [
+        "this:VV01-MeterInlet",
+        "this:KV01-MeterOutlet"
       ],
       "hasMedium": "s223:Medium-Water"
     },
     {
       "@id": "this:VS01-HeatingWaterSupplyTemperature",
+      "label": "VS01-HeatingWaterSupplyTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -739,6 +1103,7 @@
     },
     {
       "@id": "this:VS01-HeatingWaterReturnTemperature",
+      "label": "VS01-HeatingWaterReturnTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -752,6 +1117,7 @@
     },
     {
       "@id": "this:VS01-HeatingWaterReturnPressure",
+      "label": "VS01-HeatingWaterReturnPressure",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -765,8 +1131,9 @@
     },
     {
       "@id": "this:VS01-InletValvePosition",
+      "label": "VS01-InletValvePosition",
       "@type": [
-        "s223:ActuatableProperty",
+        "s223:QuantifiableActuatableProperty",
         "brick:Point",
         "brick:Actuator"
       ],
@@ -777,6 +1144,7 @@
     },
     {
       "@id": "this:VS01-PumpControl",
+      "label": "VS01-PumpControl",
       "@type": [
         "s223:ActuatableProperty",
         "s223:EnumerableProperty",
@@ -789,6 +1157,7 @@
     },
     {
       "@id": "this:VS01-OutsideAirTemperature",
+      "label": "VS01-OutsideAirTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -801,6 +1170,7 @@
     },
     {
       "@id": "this:VV01-PumpControl",
+      "label": "VV01-PumpControl",
       "@type": [
         "s223:ActuatableProperty",
         "s223:EnumerableProperty",
@@ -813,8 +1183,9 @@
     },
     {
       "@id": "this:VV01-InletValvePosition",
+      "label": "VV01-InletValvePosition",
       "@type": [
-        "s223:ActuatableProperty",
+        "s223:QuantifiableActuatableProperty",
         "brick:Point",
         "brick:Actuator"
       ],
@@ -825,12 +1196,13 @@
     },
     {
       "@id": "this:VV01-DomesticHotWaterSupplyTemperature",
+      "label": "VV01-DomesticHotWaterSupplyTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
         "brick:Sensor"
       ],
-      "isPointOf": "this:VV01-BuildingDomesticHotWaterSupplyConnection",
+      "isPointOf": "this:this:VV01-HeatExchangerSecondaryOutletConnection",
       "referenceDesignator": "VV01-GT11",
       "hasQuantityKind": "qudtqk:Temperature",
       "hasUnit": "unit:DEG_C",
@@ -838,6 +1210,7 @@
     },
     {
       "@id": "this:VV01-DomesticHotWaterReturnTemperature",
+      "label": "VV01-DomesticHotWaterReturnTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -851,18 +1224,20 @@
     },
     {
       "@id": "this:VV01-DomesticHotWaterMakeupColdWaterFlow",
+      "label": "VV01-DomesticHotWaterMakeupColdWaterFlow",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
         "brick:Sensor"
       ],
-      "isPointOf": "this:VV01-HeatExchangerSecondaryInletConnection",
+      "isPointOf": "this:VV01-DomesticHotWaterMakeupColdWaterMeter",
       "referenceDesignator": "VV01-VM1",
       "hasQuantityKind": "qudtqk:VolumeFlowRate",
       "hasUnit": "unit:M3-PER-MIN"
     },
     {
       "@id": "this:VP01-DHSupplyTemperature",
+      "label": "VP01-DHSupplyTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -876,6 +1251,7 @@
     },
     {
       "@id": "this:VP01-DHReturnTemperature",
+      "label": "VP01-DHReturnTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -889,6 +1265,7 @@
     },
     {
       "@id": "this:VP01-DHDifferentialTemperature",
+      "label": "VP01-DHDifferentialTemperature",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -902,6 +1279,7 @@
     },
     {
       "@id": "this:VP01-DHSupplyPower",
+      "label": "VP01-DHSupplyPower",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
@@ -914,12 +1292,13 @@
     },
     {
       "@id": "this:KV01-DistrictColdWaterSupplyFlow",
+      "label": "KV01-DistrictColdWaterSupplyFlow",
       "@type": [
         "s223:QuantifiableObservableProperty",
         "brick:Point",
         "brick:Sensor"
       ],
-      "isPointOf": "this:VV01-DistrictColdWaterSupplyonnection",
+      "isPointOf": "this:KV01-DistrictColdWaterSupplyMeter",
       "referenceDesignator": "VV01-VM1",
       "hasQuantityKind": "qudtqk:VolumeFlowRate",
       "hasUnit": "unit:M3-PER-MIN",
@@ -927,6 +1306,7 @@
     },
     {
       "@id": "this:VS01-OutsideSpace",
+      "label": "VS01-OutsideSpace",
       "@type": [
         "s223:PhysicalSpace"
       ],
@@ -934,6 +1314,7 @@
     },
     {
       "@id": "this:VS01-OutsideAirSpace",
+      "label": "VS01-OutsideAirSpace",
       "@type": [
         "s223:DomainSpace"
       ],
