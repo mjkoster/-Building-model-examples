@@ -132,7 +132,7 @@
       - this:VS01-ExpansionTank
       - this:VV01-DomesticHotWaterSupplyTemperatureSensor
       - this:VV01-DomesticHotWaterReturnTemperatureSensor
-      - this:VV01-DomesticHotWaterReturnColdWaterMeter
+      - this:VV01-DomesticHotWaterMakeupColdWaterMeter
 
   - "@id": this:VP01
     description: District Heat Source System
@@ -143,7 +143,7 @@
       - this:VP01-DHSupplyTemperatureSensor
       - this:VP01-DHReturnTemperatureSensor
       - this:VP01-DHDifferentialTemperatureSensor
-      - this:VP01-DHSupplyFlowMeter
+      - this:VP01-DHSupplyPowerMeter
 
   - "@id": this:KV01
     description: Cold Water System 
@@ -350,14 +350,11 @@
   - "@id": this:VP01-DHDifferentialTemperatureSensor
     label: DH Differential Temperature Sensor
     "@type": 
-      - s223:Sensor
-      - s223:TemperatureSensor
       - s223:DifferentialSensor
       - s223:Equipment
     observes: this:VP01-DHDifferentialTemperature
     hasObservationLocationHigh: this:VP01-DistrictHeatSupplyConnection
     hasObservationLocationLow: this:VV01-HeatExchangerPrimaryOutletConnection
-    hasObservationLocation: this:VP01-DHSupplyPowerMeter
 
   - "@id": this:VP01-DHSupplyPowerMeter
     label: DH Supply Power Meter
@@ -379,10 +376,6 @@
     cnx:
       - this:KV01-MeterInlet
       - this:KV01-MeterOutlet
-
-
-
-
 
   # Junctions
   - "@id": this:VP01-DistrictHeatSupplyJunction
@@ -1249,7 +1242,7 @@
       - brick:Sensor
     isPointOf: this:VP01-DHDifferentialTemperatureSensor
     referenceDesignator: VP01-GT41/GT42-DT
-    hasQuantityKind: qudtqk:Temperature
+    hasQuantityKind: qudtqk:TemperatureDifference
     hasUnit: unit:DEG_C
     hasAspect: s223:Role-Return
 

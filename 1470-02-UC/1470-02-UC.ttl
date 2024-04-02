@@ -75,7 +75,7 @@
 
 <urn:ex/VV01>
   a ns0:System ;
-  ns0:hasMember <urn:ex/VV01-HeatExchanger>, <urn:ex/VV01-InletValve>, <urn:ex/VV01-InletValveActuator>, <urn:ex/VV01-Pump>, <urn:ex/VV01-PumpActuator>, <urn:ex/VS01-ExpansionTank>, <urn:ex/VV01-DomesticHotWaterSupplyTemperatureSensor>, <urn:ex/VV01-DomesticHotWaterReturnTemperatureSensor>, <urn:ex/VV01-DomesticHotWaterReturnColdWaterMeter> ;
+  ns0:hasMember <urn:ex/VV01-HeatExchanger>, <urn:ex/VV01-InletValve>, <urn:ex/VV01-InletValveActuator>, <urn:ex/VV01-Pump>, <urn:ex/VV01-PumpActuator>, <urn:ex/VS01-ExpansionTank>, <urn:ex/VV01-DomesticHotWaterSupplyTemperatureSensor>, <urn:ex/VV01-DomesticHotWaterReturnTemperatureSensor>, <urn:ex/VV01-DomesticHotWaterMakeupColdWaterMeter> ;
   dc11:description "Domestic Hot Water System"^^xsd:string ;
   rdfs:label "Domestic Hot Water System"^^xsd:string .
 
@@ -121,9 +121,15 @@
   ns0:observes <urn:ex/VV01-DomesticHotWaterReturnTemperature> ;
   rdfs:label "Domestic Hot Water Return Temperature Sensor"^^xsd:string .
 
+<urn:ex/VV01-DomesticHotWaterMakeupColdWaterMeter>
+  a ns0:FlowMeter, ns0:Equipment ;
+  ns0:cnx <urn:ex/VV01-MeterInlet>, <urn:ex/VV01-MeterOutlet> ;
+  ns0:hasProperty <urn:ex/VV01-DomesticHotWaterMakeupColdWaterFlow> ;
+  rdfs:label "Domestic Hot Water Makeup Cold Water Meter"^^xsd:string .
+
 <urn:ex/VP01>
   a ns0:System ;
-  ns0:hasMember <urn:ex/VP01-DHSupplyTemperatureSensor>, <urn:ex/VP01-DHReturnTemperatureSensor>, <urn:ex/VP01-DHDifferentialTemperatureSensor>, <urn:ex/VP01-DHSupplyFlowMeter> ;
+  ns0:hasMember <urn:ex/VP01-DHSupplyTemperatureSensor>, <urn:ex/VP01-DHReturnTemperatureSensor>, <urn:ex/VP01-DHDifferentialTemperatureSensor>, <urn:ex/VP01-DHSupplyPowerMeter> ;
   dc11:description "District Heat Source System"^^xsd:string ;
   rdfs:label "District Heat Source System"^^xsd:string .
 
@@ -140,12 +146,17 @@
   rdfs:label "DH Return Temperature Sensor"^^xsd:string .
 
 <urn:ex/VP01-DHDifferentialTemperatureSensor>
-  a ns0:Sensor, ns0:TemperatureSensor, ns0:DifferentialSensor, ns0:Equipment ;
-  ns0:hasObservationLocation <urn:ex/VP01-DHSupplyPowerMeter> ;
+  a ns0:DifferentialSensor, ns0:Equipment ;
   ns0:hasObservationLocationHigh <urn:ex/VP01-DistrictHeatSupplyConnection> ;
   ns0:hasObservationLocationLow <urn:ex/VV01-HeatExchangerPrimaryOutletConnection> ;
   ns0:observes <urn:ex/VP01-DHDifferentialTemperature> ;
   rdfs:label "DH Differential Temperature Sensor"^^xsd:string .
+
+<urn:ex/VP01-DHSupplyPowerMeter>
+  a ns0:PowerMeter, ns0:Equipment ;
+  ns0:cnx <urn:ex/VP01-MeterInlet>, <urn:ex/VP01-MeterOutlet> ;
+  ns0:hasProperty <urn:ex/VP01-DHSupplyPower> ;
+  rdfs:label "DH Supply Power Meter"^^xsd:string .
 
 <urn:ex/KV01>
   a ns0:System ;
@@ -417,12 +428,6 @@
   rdfs:label "VV01-DomesticHotWaterReturnTemperature"^^xsd:string ;
   ns3:isPointOf <urn:ex/VV01-BuildingDomesticHotWaterRecirculationConnection> .
 
-<urn:ex/VV01-DomesticHotWaterMakeupColdWaterMeter>
-  a ns0:FlowMeter, ns0:Equipment ;
-  ns0:cnx <urn:ex/VV01-MeterInlet>, <urn:ex/VV01-MeterOutlet> ;
-  ns0:hasProperty <urn:ex/VV01-DomesticHotWaterMakeupColdWaterFlow> ;
-  rdfs:label "Domestic Hot Water Makeup Cold Water Meter"^^xsd:string .
-
 <urn:ex/VV01-MeterInlet>
   a ns0:InletConnectionPoint ;
   ns0:cnx <urn:ex/KV01-BuildingColdWaterSupplyConnection>, <urn:ex/VV01-DomesticHotWaterMakeupColdWaterMeter> ;
@@ -477,17 +482,11 @@
   rdfs:label "VP01-DHReturnTemperature"^^xsd:string ;
   ns3:isPointOf <urn:ex/VP01-DistrictHeatReturnConnection> .
 
-<urn:ex/VP01-DHSupplyPowerMeter>
-  a ns0:PowerMeter, ns0:Equipment ;
-  ns0:cnx <urn:ex/VP01-MeterInlet>, <urn:ex/VP01-MeterOutlet> ;
-  ns0:hasProperty <urn:ex/VP01-DHSupplyPower> ;
-  rdfs:label "DH Supply Power Meter"^^xsd:string .
-
 <urn:ex/VP01-DHDifferentialTemperature>
   a ns0:QuantifiableObservableProperty, ns3:Point, ns3:Sensor ;
   ns0:hasAspect ns0:Role-Return ;
   ns1:referenceDesignator "VP01-GT41/GT42-DT"^^xsd:string ;
-  ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+  ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/TemperatureDifference> ;
   ns2:hasUnit <http://qudt.org/vocab/unit/DEG_C> ;
   rdfs:label "VP01-DHDifferentialTemperature"^^xsd:string ;
   ns3:isPointOf <urn:ex/VP01-DHDifferentialTemperatureSensor> .
